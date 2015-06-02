@@ -11,7 +11,7 @@ class Video extends Eloquent {
      */
     protected $table = 'lrvm_videos';
 
-	protected $fillable = ['title', 'vimeo_id', 'description'];
+	protected $fillable = ['title', 'vimeo_id', 'description', 'thumbnail_url'];
 
     /**
      * Format Vimeo Link from ID

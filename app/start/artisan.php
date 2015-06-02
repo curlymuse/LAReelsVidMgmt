@@ -11,3 +11,5 @@
 |
 */
 
+Artisan::add(new FetchVimeoAll(App::make('LRVM\Domain\Video\VideoRepository')));
+

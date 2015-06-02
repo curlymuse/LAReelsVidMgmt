@@ -14,12 +14,13 @@ class CreateVideosTable extends Migration {
 
 		Schema::create('lrvm_videos', function(Blueprint $table) {
 			$table->increments('id');
-      $table->integer('vimeo_id')->unsigned();
-      $table->string('title', 1024);
-      $table->text('description');
-      $table->boolean('is_published')->default(true);
-      $table->boolean('is_ingested')->default(false);
-      $table->softDeletes();
+            $table->integer('vimeo_id')->unsigned();
+            $table->string('title', 1024);
+            $table->text('description')->nullable();
+            $table->string('thumbnail_url', 400);
+            $table->boolean('is_published')->default(true);
+            $table->boolean('is_ingested')->default(false);
+            $table->softDeletes();
 			$table->timestamps();
 		});
 

@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"fzaninotto/faker": "~1.5"
+		"fzaninotto/faker": "~1.5",
+		"vimeo/vimeo-api": "^1.2"
 	},
 	"require-dev": {
 		"way/generators": "~2.0"
