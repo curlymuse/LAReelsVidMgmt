@@ -11,6 +11,17 @@ class Video extends Eloquent {
      */
     protected $table = 'lrvm_videos';
 
-	protected $fillable = [];
+	protected $fillable = ['title', 'vimeo_id', 'description'];
+
+    /**
+     * Format Vimeo Link from ID
+     *
+     * @return string
+     */
+    public function getLink() {
+
+        return sprintf('https://vimeo.com/%d', $this->vimeo_id);
+
+    }
 
 }

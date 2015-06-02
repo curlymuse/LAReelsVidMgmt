@@ -42,6 +42,8 @@ class VideoController extends \BaseController {
 	 * @return Response
 	 */
 	public function create() {
+
+        return View::make('pages.createvideo');
 		//
 	}
 
@@ -52,7 +54,13 @@ class VideoController extends \BaseController {
 	 * @return Response
 	 */
 	public function store() {
-		//
+
+        $data = Input::only(['title', 'description']);
+        $data['vimeo_id'] = preg_replace("/[^0-9]/","",Input::get('link'));
+        $this->rVideo->store($data);
+
+        return Redirect::route('videos.index');
+
 	}
 
 	/**

@@ -33,6 +33,18 @@ abstract class EloquentRepository {
 
     }
 
+    /**
+     * Store a new resource
+     *
+     * @param array $input
+     * @return Object
+     */
+    public function store(array $input) {
+
+        return $this->model->create($input);
+
+    }
+
 }
 
 ?>

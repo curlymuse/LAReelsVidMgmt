@@ -15,3 +15,11 @@ Route::get('/', [
   'as'      => 'videos.index',
   'uses'    =>'VideoController@index',
 ]);
+Route::get('/new', [
+    'as'      => 'videos.create',
+    'uses'    =>'VideoController@create',
+]);
+Route::post('/new', [
+    'as'      => 'videos.store',
+    'uses'    =>'VideoController@store',
+]);
