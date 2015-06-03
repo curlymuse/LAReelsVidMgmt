@@ -34,4 +34,16 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
         $oVideo->save();
 
     }
+
+    /**
+     * Check if a video exists based on vimeo ID
+     *
+     * @param $id
+     * @return boolean
+     */
+    public function vimeoIdExists($id) {
+
+        return $this->has('vimeo_id', $id);
+
+    }
 }

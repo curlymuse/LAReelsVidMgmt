@@ -12,6 +12,14 @@ interface VideoRepository {
      */
     public function saveCategories($iVideo, $categories);
 
+    /**
+     * Check if a video exists based on vimeo ID
+     *
+     * @param $id
+     * @return boolean
+     */
+    public function vimeoIdExists($id);
+
 }
 
 ?>

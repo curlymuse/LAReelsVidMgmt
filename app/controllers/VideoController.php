@@ -41,7 +41,7 @@ class VideoController extends \BaseController {
 
         $videos = $this->rVideo->all();
         $categories = $this->rCat->all();
-        return View::make('pages.listvideos')
+        return View::make('pages.videos.listvideos')
             ->with(compact(['videos', 'categories']));
 
 	}
@@ -54,8 +54,8 @@ class VideoController extends \BaseController {
 	 */
 	public function create() {
 
-        return View::make('pages.createvideo');
-		//
+        return View::make('pages.videos.createvideo');
+
 	}
 
 	/**

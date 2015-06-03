@@ -13,6 +13,7 @@
                     <li class="active"><a href="#">Home</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
+            <span class="pull-right"><a href="{{ URL::route('logout') }}">Logout</a></span>
         </div>
     </div>
 </div>

@@ -1,43 +1,38 @@
 <?php
 
-class $NAME$ extends \BaseController {
+class AuthController extends \BaseController {
 
 	/**
-	 * Display a listing of the resource.
-	 * GET /$COLLECTION$
+	 * Login form (show)
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		//
-	}
+	public function create() {
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /$COLLECTION$/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
+		return View::make('pages.auth.show');
+
 	}
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /$COLLECTION$
+	 * POST /auth
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function store() {
+
+		$data = Input::only(['email', 'password']);
+		if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']]))
+			return Redirect::route('videos.index');
+
+		$error = 'Incorrect login. Please try again.';
+		return Redirect::route('login.show')->withError($error);
+
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /$COLLECTION$/{id}
+	 * GET /auth/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -49,7 +44,7 @@ class $NAME$ extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /$COLLECTION$/{id}/edit
+	 * GET /auth/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -59,21 +54,21 @@ class $NAME$ extends \BaseController {
 		//
 	}
 
-	/**
+	/*
 	 * Update the specified resource in storage.
-	 * PUT /$COLLECTION$/{id}
+	 * PUT /auth/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update($id) {
+
+
 	}
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /$COLLECTION$/{id}
+	 * DELETE /auth/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

@@ -8,19 +8,19 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'model_template_path' => '/home/vagrant/Code/LAReels/LAReelsVidMgmt/app/templates/model.txt',
+    'model_template_path' => '/home/vagrant/Code/LAReelsVidMgmt/app/templates/model.txt',
 
-    'scaffold_model_template_path' => '/home/vagrant/Code/LAReels/LAReelsVidMgmt/app/templates/scaffolding/model.txt',
+    'scaffold_model_template_path' => '/home/vagrant/Code/LAReelsVidMgmt/app/templates/scaffolding/model.txt',
 
-    'controller_template_path' => '/home/vagrant/Code/LAReels/LAReelsVidMgmt/app/templates/controller.txt',
+    'controller_template_path' => '/home/vagrant/Code/LAReelsVidMgmt/app/templates/controller.txt',
 
-    'scaffold_controller_template_path' => '/home/vagrant/Code/LAReels/LAReelsVidMgmt/app/templates/scaffolding/controller.txt',
+    'scaffold_controller_template_path' => '/home/vagrant/Code/LAReelsVidMgmt/app/templates/scaffolding/controller.txt',
 
-    'migration_template_path' => '/home/vagrant/Code/LAReels/LAReelsVidMgmt/app/templates/migration.txt',
+    'migration_template_path' => '/home/vagrant/Code/LAReelsVidMgmt/app/templates/migration.txt',
 
-    'seed_template_path' => '/home/vagrant/Code/LAReels/LAReelsVidMgmt/app/templates/seed.txt',
+    'seed_template_path' => '/home/vagrant/Code/LAReelsVidMgmt/app/templates/seed.txt',
 
-    'view_template_path' => '/home/vagrant/Code/LAReels/LAReelsVidMgmt/app/templates/view.txt',
+    'view_template_path' => '/home/vagrant/Code/LAReelsVidMgmt/app/templates/view.txt',
 
 
     /*

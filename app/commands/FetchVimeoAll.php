@@ -46,8 +46,7 @@ class FetchVimeoAll extends Command {
 	 *
 	 * @return mixed
 	 */
-	public function fire()
-    {
+	public function fire() {
 
         $this->info('Starting...');
 
@@ -60,19 +59,31 @@ class FetchVimeoAll extends Command {
 
         $url = '/users/lareels/videos';
 
-        $maxPage = 1;
+        $maxPage = 2;
         for ($i = 1; $i <= $maxPage; $i++) {
 
             try {
 
                 $this->info(sprintf('Retrieving page %d of %d...', $i, $maxPage));
 
-                $response = $lib->request($url, ['per_page' => 20, 'page' => $i], 'GET');
+                $options = [
+                    'per_page'  => 20,
+                    'page'      => $i,
+                    'sort'      => 'date',
+                    'direction' => 'desc'
+                ];
+                $response = $lib->request($url, $options, 'GET');
 
                 foreach ($response['body']['data'] as $video) {
 
+                    $vimeoId = str_replace('/videos/', '', $video['uri']);
+
+                    //  Do not insert video if it already exists in database
+                    if ($this->rVideo->vimeoIdExists($vimeoId))
+                        continue;
+
                     $data = [
-                        'vimeo_id' => str_replace('/videos/', '', $video['uri']),
+                        'vimeo_id' => $vimeoId,
                         'title' => $video['name'],
                         'thumbnail_url' => $video['pictures']['sizes'][0]['link']
                     ];

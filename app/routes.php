@@ -11,21 +11,43 @@
 |
 */
 
-Route::get('/', [
-  'as'      => 'videos.index',
-  'uses'    =>'VideoController@index',
-]);
-Route::get('/new', [
-    'as'      => 'videos.create',
-    'uses'    =>'VideoController@create',
-]);
-Route::post('/new', [
-    'as'      => 'videos.store',
-    'uses'    =>'VideoController@store',
-]);
+
+Route::get('/logout', ['as' => 'logout', function(){
+    Auth::logout();
+    return Redirect::route('login.show');
+}]);
+Route::get('/', function(){
+    $rte = (Auth::check()) ? 'videos.index' : 'login.show';
+    return Redirect::route($rte);
+});
+
+Route::group(['prefix' => 'auth'], function() {
+    Route::get('/', [
+        'as' => 'login.show',
+        'uses' => 'AuthController@create'
+    ]);
+    Route::post('/', [
+        'as' => 'login.submit',
+        'uses' => 'AuthController@store'
+    ]);
+});
 
 
-Route::post('/categories', [
-    'as'      => 'categories.update',
-    'uses'  => 'CategoryController@update'
-]);
+Route::group(['prefix' => 'lrvm'], function() {
+    Route::get('/', [
+        'as' => 'videos.index',
+        'uses' => 'VideoController@index',
+    ]);
+    Route::get('/new', [
+        'as' => 'videos.create',
+        'uses' => 'VideoController@create',
+    ]);
+    Route::post('/new', [
+        'as' => 'videos.store',
+        'uses' => 'VideoController@store',
+    ]);
+    Route::post('/categories', [
+        'as' => 'categories.update',
+        'uses' => 'CategoryController@update'
+    ]);
+});

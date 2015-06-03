@@ -57,6 +57,31 @@ abstract class EloquentRepository {
 
     }
 
+    /**
+     * See if a record exists, given the primary key
+     *
+     * @param int $id
+     * @return boolean
+     */
+    public function hasPK($id) {
+
+        return (boolean)($this->model->where('id', $id)->count());
+
+    }
+
+    /**
+     * See if a record exists, given a specific column value
+     *
+     * @param string $col
+     * @param string @value
+     * @return boolean
+     */
+    public function has($col, $value) {
+
+        return (boolean)($this->model->where($col, $value)->count());
+
+    }
+
 }
 
 ?>

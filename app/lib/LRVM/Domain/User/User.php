@@ -1,5 +1,8 @@
 <?php
 
+namespace LRVM\Domain\User;
+
+use Eloquent;
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
@@ -14,7 +17,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	protected $table = 'lrvm_users';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
