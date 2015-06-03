@@ -45,6 +45,18 @@ abstract class EloquentRepository {
 
     }
 
+    /**
+     * Get a single object
+     *
+     * @param int $id
+     * @return Object
+     */
+    public function find($id) {
+
+        return $this->model->findOrFail($id);
+
+    }
+
 }
 
 ?>

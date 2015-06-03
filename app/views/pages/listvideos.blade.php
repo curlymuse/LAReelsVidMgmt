@@ -19,7 +19,7 @@
         <tr>
             <td>{{ $video->title }}</td>
             <td>{{ link_to($video->getLink(), $video->getLink()) }}</td>
-            <td class="cat-set" id="v_{{ $video->id}}" data-video-id="{{ $video->id }}">
+            <td class="cat-set" id="v_{{ $video->id}}" data-video-id="{{ $video->id }}" data-orig-cats='{{ json_encode($video->categories()->lists('category_id')) }}'>
             @foreach ($categories as $cat)
                 <button type="button" class="btn cat-button" data-toggle="button" aria-pressed="false" autocomplete="off" data-category-id="{{ $cat->id }}">
                     {{ $cat->title }}

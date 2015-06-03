@@ -3,6 +3,7 @@
 namespace LRVM\Domain\Category;
 
 use Eloquent;
+use LRVM\Domain\Video\Video;
 
 class Category extends Eloquent {
 
@@ -23,7 +24,8 @@ class Category extends Eloquent {
      */
     public function videos() {
 
-        return $this->belongsToMany('lrvm_videos_categories', 'category_id');
+        return $this->belongsToMany('Video', 'lrvm_videos_categories', 'category_id', 'video_id')
+            ->withTimestamps();
 
     }
 

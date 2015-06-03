@@ -6,6 +6,7 @@ var VideoList = Class.extend({
         var _class = this;
         _class.url_category_update = params.url_category_update;
         _class.setupEvents();
+        _class.populateCats();
     },
 
     setupEvents: function() {
@@ -33,6 +34,17 @@ var VideoList = Class.extend({
             var el = $(this);
             if (!el.is(':disabled'))
                 _class.saveCategories(el.attr('data-video-id'));
+        });
+    },
+
+    populateCats: function() {
+        $.each($('.cat-set'), function(i, el){
+            var ids = $.parseJSON($(el).attr('data-orig-cats'));
+            $.each(ids, function(j, id) {
+                $(el).find('.cat-button[data-category-id="'+id+'"]')
+                    .addClass('active')
+                    .addClass('btn-info');
+            });
         });
     },
 

@@ -31,7 +31,6 @@ class VideoController extends \BaseController {
 
     }
 
-
 	/**
 	 * Show list of videos
 	 * GET /videos
