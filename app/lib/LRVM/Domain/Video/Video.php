@@ -24,4 +24,13 @@ class Video extends Eloquent {
 
     }
 
+    /**
+     * Video has Many Categories
+     */
+    public function categories() {
+
+        return $this->belongsToMany('lrvm_videos_categories', 'video_id');
+
+    }
+
 }

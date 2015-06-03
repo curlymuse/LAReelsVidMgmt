@@ -12,12 +12,20 @@
         <tr>
             <th>Title</th>
             <th>Link</th>
+            <th>Tags</th>
             <th>Thumbnail</th>
         </tr>
     @foreach ($videos as $video)
         <tr>
             <td>{{ $video->title }}</td>
             <td>{{ link_to($video->getLink(), $video->getLink()) }}</td>
+            <td class="cat-set">
+            @foreach ($categories as $cat)
+                <button type="button" class="btn cat-button" data-toggle="button" aria-pressed="false" autocomplete="off">
+                    {{ $cat->title }}
+                </button>
+            @endforeach
+            </td>
             <td><img class="img-rounded" src="{{ $video->thumbnail_url }}" /></td>
         </tr>
     @endforeach

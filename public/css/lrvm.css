@@ -3,3 +3,6 @@ body {
     width:960px;
     margin:0 auto;
 }
+.cat-set .cat-button {
+    margin-bottom:3px;
+}

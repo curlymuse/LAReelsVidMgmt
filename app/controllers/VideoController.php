@@ -1,6 +1,7 @@
 <?php
 
 use LRVM\Domain\Video\VideoRepository;
+use LRVM\Domain\Category\CategoryRepository;
 
 class VideoController extends \BaseController {
 
@@ -12,11 +13,21 @@ class VideoController extends \BaseController {
     protected $rVideo;
 
     /**
-     * Inject VideoRepository
+     * Category Repository
+     *
+     * @var CategoryRepository
      */
-    public function __construct(VideoRepository $rVideo) {
+    protected $rCat;
+
+    /**
+     * Inject VideoRepository
+     * @param VideoRepository $rVideo
+     * @param CategoryRepository $rCat
+     */
+    public function __construct(VideoRepository $rVideo, CategoryRepository $rCat) {
 
         $this->rVideo = $rVideo;
+        $this->rCat = $rCat;
 
     }
 
@@ -30,8 +41,9 @@ class VideoController extends \BaseController {
 	public function index() {
 
         $videos = $this->rVideo->all();
+        $categories = $this->rCat->all();
         return View::make('pages.listvideos')
-            ->with(compact(['videos']));
+            ->with(compact(['videos', 'categories']));
 
 	}
 

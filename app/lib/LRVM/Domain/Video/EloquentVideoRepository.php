@@ -3,7 +3,7 @@
 namespace LRVM\Domain\Video;
 
 use LRVM\Core\EloquentRepository;
-use Video;
+use LRVM\Domain\Video\Video;
 
 class EloquentVideoRepository extends EloquentRepository implements VideoRepository {
 
