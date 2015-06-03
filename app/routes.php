@@ -23,3 +23,9 @@ Route::post('/new', [
     'as'      => 'videos.store',
     'uses'    =>'VideoController@store',
 ]);
+
+
+Route::post('/categories', [
+    'as'      => 'categories.update',
+    'uses'  => 'CategoryController@update'
+]);

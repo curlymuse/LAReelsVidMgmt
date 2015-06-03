@@ -19,16 +19,28 @@
         <tr>
             <td>{{ $video->title }}</td>
             <td>{{ link_to($video->getLink(), $video->getLink()) }}</td>
-            <td class="cat-set">
+            <td class="cat-set" id="v_{{ $video->id}}" data-video-id="{{ $video->id }}">
             @foreach ($categories as $cat)
-                <button type="button" class="btn cat-button" data-toggle="button" aria-pressed="false" autocomplete="off">
+                <button type="button" class="btn cat-button" data-toggle="button" aria-pressed="false" autocomplete="off" data-category-id="{{ $cat->id }}">
                     {{ $cat->title }}
                 </button>
             @endforeach
+                <br/>
+                <p class="pull-right">
+                    <button type="button" class="btn btn-xs btn-success statusButton" aria-pressed="false" disabled="disabled" data-video-id="{{ $video->id }}">Synced</button>
+                </p>
             </td>
             <td><img class="img-rounded" src="{{ $video->thumbnail_url }}" /></td>
         </tr>
     @endforeach
     </table>
+    <script type="text/javascript" src="js/VideoList.class.js"></script>
+    <script>
+        $(document).ready(function(){
+            new VideoList({
+                'url_category_update': '{{ URL::route('categories.update') }}'
+            });
+        });
+    </script>
 
 @stop

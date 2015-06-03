@@ -15,8 +15,6 @@
     <footer>
       @include('includes.footer')
     </footer>
-  
-    @include('includes.app-footer')
-  
+
   </body>
 </html>
