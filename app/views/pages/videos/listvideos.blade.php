@@ -8,6 +8,10 @@
         <a class="btn btn-primary" href="{{ URL::route('videos.create') }}" role="button">Add New Video</a>
     </p>
 
+    <div>
+        {{ $videos->links() }}
+    </div>
+
     <table class="table table-bordered table-striped">
         <tr>
             <th>Title</th>
@@ -34,6 +38,11 @@
         </tr>
     @endforeach
     </table>
+
+    <div>
+        {{ $videos->links() }}
+    </div>
+
     <script type="text/javascript" src="js/VideoList.class.js"></script>
     <script>
         $(document).ready(function(){

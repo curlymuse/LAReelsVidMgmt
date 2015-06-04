@@ -59,7 +59,7 @@ class FetchVimeoAll extends Command {
 
         $url = '/users/lareels/videos';
 
-        $maxPage = 2;
+        $maxPage = 30;
         for ($i = 1; $i <= $maxPage; $i++) {
 
             try {

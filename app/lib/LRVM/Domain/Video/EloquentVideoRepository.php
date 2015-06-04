@@ -19,6 +19,17 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
     }
 
     /**
+     * Paginated results
+     *
+     * @return mixed
+     */
+    public function all() {
+
+        return $this->model->paginate(20);
+
+    }
+
+    /**
      * Update categories on a video
      *
      * @param int $video
