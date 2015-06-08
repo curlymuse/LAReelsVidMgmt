@@ -57,4 +57,20 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
         return $this->has('vimeo_id', $id);
 
     }
+
+    /**
+     * Toggle the public/private status of a video
+     *
+     * @param int $id
+     * @return boolean New status
+     */
+    public function togglePublic($id) {
+
+        $video = $this->find($id);
+        $video->is_public = !$video->is_public;
+        $video->save();
+
+        return $video->is_public;
+
+    }
 }

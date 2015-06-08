@@ -17,8 +17,16 @@
     @foreach ($videos as $video)
         <tr>
             <td>{{ $video->id }}.</td>
-            <td>{{ $video->title }}</td>
-            <td>{{ link_to($video->getLink(), $video->getLink()) }}</td>
+            <td>
+                {{ $video->title }}<br/><br/>
+                <button type="button" class="btn btn-xs btn-{{ ($video->is_public) ? 'success' : 'danger' }} public-button" aria-pressed="false" data-video-id="{{ $video->id }}" id="pub_{{ $video->id }}">
+                    {{ $video->getPublicStatus() }}
+                </button>
+            </td>
+            <td>
+                {{ link_to($video->getLink(), $video->getLink()) }}<br/><br/>
+            </td>
+            </td>
             <td class="cat-set" id="v_{{ $video->id}}" data-video-id="{{ $video->id }}" data-orig-cats='{{ json_encode($video->categories()->lists('category_id')) }}'>
             @foreach ($categories as $cat)
                 <button type="button" class="btn cat-button" data-toggle="button" aria-pressed="false" autocomplete="off" data-category-id="{{ $cat->id }}">
@@ -30,7 +38,9 @@
                     <button type="button" class="btn btn-xs btn-success statusButton" aria-pressed="false" disabled="disabled" data-video-id="{{ $video->id }}">Synced</button>
                 </p>
             </td>
-            <td><img class="img-rounded" src="{{ $video->thumbnail_url }}" /></td>
+            <td>
+                <img class="img-rounded" src="{{ $video->thumbnail_url }}" /><br/>
+            </td>
         </tr>
     @endforeach
     </table>
@@ -43,7 +53,8 @@
     <script>
         $(document).ready(function(){
             new VideoList({
-                'url_category_update': '{{ URL::route('categories.update') }}'
+                'url_category_update': '{{ URL::route('categories.update') }}',
+                'url_public_update': '{{ URL::route('videos.updatePublic') }}'
             });
         });
     </script>

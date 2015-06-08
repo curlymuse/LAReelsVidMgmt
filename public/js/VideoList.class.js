@@ -1,10 +1,12 @@
 var VideoList = Class.extend({
 
     url_category_update: '',
+    url_puhlic_update: '',
 
     init: function(params) {
         var _class = this;
         _class.url_category_update = params.url_category_update;
+        _class.url_public_update = params.url_public_update;
         _class.setupEvents();
         _class.populateCats();
     },
@@ -35,6 +37,9 @@ var VideoList = Class.extend({
             if (!el.is(':disabled'))
                 _class.saveCategories(el.attr('data-video-id'));
         });
+        $('.public-button').on('click', function(){
+            _class.updatePublicStatus($(this).attr('data-video-id'));
+        });
     },
 
     populateCats: function() {
@@ -46,6 +51,27 @@ var VideoList = Class.extend({
                     .addClass('btn-info');
             });
         });
+    },
+
+    updatePublicStatus: function(videoId) {
+        var _class = this;
+        var data = {videoId: videoId};
+        $.ajax(_class.url_public_update,{
+            method: 'POST',
+            data: data,
+            success: _class._bind(_class, _class.cb_updatePublicStatus)
+        });
+    },
+
+    updatePublicStatusView: function(videoId, isPublic) {
+        var button = $('#pub_'+videoId);
+        if (isPublic) {
+            button.html('Public');
+            button.removeClass('btn-danger').addClass('btn-success');
+        } else {
+            button.html('Private');
+            button.removeClass('btn-success').addClass('btn-danger');
+        }
     },
 
     toggleCategory: function(el) {
@@ -108,6 +134,17 @@ var VideoList = Class.extend({
         var _class = this;
         var el = $('#v_'+obj.id);
         el.trigger('finishedSaving');
+    },
+
+    cb_updatePublicStatus: function(obj) {
+        var _class = this;
+        _class.updatePublicStatusView(obj.videoId, obj.is_public);
+    },
+
+    _bind: function(context, method) {
+        return function () {
+            return method.apply(context, arguments);
+        }
     }
 
 });

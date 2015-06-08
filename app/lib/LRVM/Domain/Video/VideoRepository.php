@@ -20,6 +20,14 @@ interface VideoRepository {
      */
     public function vimeoIdExists($id);
 
+    /**
+     * Toggle the public/private status of a video
+     *
+     * @param int $id
+     * @return boolean Current status
+     */
+    public function togglePublic($id);
+
 }
 
 ?>

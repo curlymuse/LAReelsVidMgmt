@@ -35,4 +35,15 @@ class Video extends Eloquent {
 
     }
 
+    /**
+     * Get string saying whether is published or not
+     *
+     * @return string
+     */
+    public function getPublicStatus() {
+
+        return ($this->is_public) ? 'Public' : 'Private';
+
+    }
+
 }

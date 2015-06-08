@@ -46,6 +46,10 @@ Route::group(['prefix' => 'lrvm'], function() {
         'as' => 'videos.store',
         'uses' => 'VideoController@store',
     ]);
+    Route::post('/updatepublic', [
+        'as'    => 'videos.updatePublic',
+        'uses' => 'VideoController@update',
+    ]);
     Route::post('/categories', [
         'as' => 'categories.update',
         'uses' => 'CategoryController@update'

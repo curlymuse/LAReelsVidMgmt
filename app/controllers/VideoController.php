@@ -97,14 +97,20 @@ class VideoController extends \BaseController {
 	}
 
 	/**
-	 * Update the specified resource in storage.
+	 * Toggle the public/private status of the video
 	 * PUT /videos/{id}
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id) {
-		//
+	public function update() {
+
+        $videoId = Input::get('videoId');
+        $status = $this->rVideo->togglePublic($videoId);
+
+        $response = ['videoId' => $videoId, 'is_public' => $status];
+        return Response::json($response);
+
+
 	}
 
 	/**
