@@ -14,6 +14,7 @@
 
     <table class="table table-bordered table-striped">
         <tr>
+            <th>#</th>
             <th>Title</th>
             <th>Link</th>
             <th>Tags</th>
@@ -21,6 +22,7 @@
         </tr>
     @foreach ($videos as $video)
         <tr>
+            <td>{{ $video->id }}.</td>
             <td>{{ $video->title }}</td>
             <td>{{ link_to($video->getLink(), $video->getLink()) }}</td>
             <td class="cat-set" id="v_{{ $video->id}}" data-video-id="{{ $video->id }}" data-orig-cats='{{ json_encode($video->categories()->lists('category_id')) }}'>

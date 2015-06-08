@@ -4,7 +4,10 @@
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
   <link href="css/lrvm.css" rel="stylesheet" media="screen">
+  <!--
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+  -->
+  <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/class.js"></script>
   <script type="text/javascript">
