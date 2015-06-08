@@ -1,36 +1,14 @@
-@extends('layouts.default')
-
+@extends('layouts.login')
 @section('content')
 
-    <h1>Login Here</h1>
+{{ Form::open(['route' => 'login.submit', 'method' => 'post', 'class' => 'form-signin']) }}
 
-    {{ Form::open(['route' => 'login.submit', 'method' => 'post']) }}
+    <h2 class="form-signin-heading">LA Reels Login</h2>
 
-    <table>
-        <tr>
-            <td>
-                {{ Form::label('email', 'Email') }}
-            </td>
-            <td>
-                {{ Form::text('email') }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {{ Form::label('password', 'Password') }}
-            </td>
-            <td>
-                {{ Form::password('password') }}
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                {{ Form::submit('Submit') }}
-            </td>
-        </tr>
+    {{ Form::text('email', NULL, ['placeholder' => 'Email address', 'class' => 'input-block-level']) }}<br/>
+    {{ Form::password('password', ['placeholder' => 'Password', 'class' => 'input-block-level']) }}<br/>
+    <button class="btn btn-large btn-primary" type="submit">Sign in</button>
 
-    </table>
-
-    {{ Form::close() }}
+{{ Form::close() }}
 
 @stop

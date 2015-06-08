@@ -2,12 +2,6 @@
 
 @section('content')
 
-    <h1>Vimeo Videos List</h1>
-
-    <p>
-        <a class="btn btn-primary" href="{{ URL::route('videos.create') }}" role="button">Add New Video</a>
-    </p>
-
     <div>
         {{ $videos->links() }}
     </div>

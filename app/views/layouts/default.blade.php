@@ -5,7 +5,7 @@
   </head>
   <body>
     <header class="header">
-      @include('includes.header')
+      @include('includes.header-white')
     </header><!-- / End header -->
   
     <main role="main">
