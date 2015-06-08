@@ -70,7 +70,7 @@ class FetchVimeoAll extends Command {
                     'per_page'  => 20,
                     'page'      => $i,
                     'sort'      => 'date',
-                    'direction' => 'desc'
+                    'direction' => 'asc'
                 ];
                 $response = $lib->request($url, $options, 'GET');
 

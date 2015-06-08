@@ -40,9 +40,10 @@ class VideoController extends \BaseController {
 	public function index() {
 
         $videos = $this->rVideo->all();
-        $categories = $this->rCat->all();
+        $genres = $this->rCat->allGenres();
+        $primary = $this->rCat->allPrimary();
         return View::make('pages.videos.listvideos')
-            ->with(compact(['videos', 'categories']));
+            ->with(compact(['videos', 'genres', 'primary']));
 
 	}
 

@@ -24,12 +24,18 @@
                 </button>
             </td>
             <td>
-                {{ link_to($video->getLink(), $video->getLink()) }}<br/><br/>
+                <a href="{{ $video->getLink() }}" target="_blank">{{ $video->getLink() }}</a><br/><br/>
             </td>
             </td>
             <td class="cat-set" id="v_{{ $video->id}}" data-video-id="{{ $video->id }}" data-orig-cats='{{ json_encode($video->categories()->lists('category_id')) }}'>
-            @foreach ($categories as $cat)
-                <button type="button" class="btn cat-button" data-toggle="button" aria-pressed="false" autocomplete="off" data-category-id="{{ $cat->id }}">
+            @foreach ($primary as $cat)
+                <button type="button" class="btn btn-sm cat-button" data-toggle="button" aria-pressed="false" autocomplete="off" data-category-id="{{ $cat->id }}">
+                    {{ $cat->title }}
+                </button>
+            @endforeach
+                <hr/>
+            @foreach ($genres as $cat)
+                <button type="button" class="btn btn-sm cat-button" data-toggle="button" aria-pressed="false" autocomplete="off" data-category-id="{{ $cat->id }}">
                     {{ $cat->title }}
                 </button>
             @endforeach

@@ -17,4 +17,25 @@ class EloquentCategoryRepository extends EloquentRepository implements CategoryR
 
     }
 
+    /**
+     * Get all primary categories
+     *
+     * @return mixed
+     */
+    function allPrimary() {
+
+       return $this->model->whereIsPrimary(true)->get();
+
+    }
+
+    /**
+     * Get all genre categories
+     *
+     * @return mixed
+     */
+    function allGenres() {
+
+        return $this->model->whereIsPrimary(false)->get();
+
+    }
 }

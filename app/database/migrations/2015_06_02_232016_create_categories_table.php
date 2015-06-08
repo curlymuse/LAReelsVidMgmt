@@ -15,6 +15,7 @@ class CreateCategoriesTable extends Migration {
         Schema::create('lrvm_categories', function(Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->boolean('is_primary')->default(false);
             $table->boolean('is_published')->default(true);
         });
 
