@@ -44,15 +44,18 @@ class ApiVideosController extends \BaseController {
 		//
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /apivideos
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
+    /**
+     * Store the post ID for a video
+     *
+     * @param $id
+     * @param $postId
+     * @return Response
+     */
+	public function store($id, $postId) {
+
+        $this->rVideo->linkPost($id, $postId);
+        return $this->_succeed();
+
 	}
 
 	/**

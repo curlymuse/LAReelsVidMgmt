@@ -93,4 +93,19 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
         $video->save();
 
     }
+
+    /**
+     * Link a Wordpress post to the video
+     *
+     * @param int $id Video ID
+     * @param int $postId Post ID
+     * @return bool
+     */
+    public function linkPost($id, $postId) {
+
+        $video = $this->find($id);
+        $video->wordpress_post_id = $postId;
+        $video->save();
+
+    }
 }

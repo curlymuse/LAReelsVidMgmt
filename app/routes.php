@@ -47,6 +47,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.videos.marksynced',
             'uses' => 'ApiVideosController@update',
         ]);
+        Route::post('{id}/linkpost/{postId}', [
+            'as' => 'api.videos.linkpost',
+            'uses' => 'ApiVideosController@store',
+        ]);
     });
 
     if (App::environment() == 'local') {
@@ -61,6 +65,10 @@ Route::group(['prefix' => 'api'], function(){
         Route::get('{id}/marksynced', [
             'as' => 'api.videos.marksynced',
             'uses' => 'ApiVideosController@update',
+        ]);
+        Route::get('{id}/linkpost/{postId}', [
+            'as' => 'api.videos.linkpost',
+            'uses' => 'ApiVideosController@store',
         ]);
     }
 });

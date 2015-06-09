@@ -35,6 +35,7 @@ class EloquentVideoPresenter extends EloquentVideoRepository {
             'id'    => $video->id,
             'is_public' => $video->is_public,
             'is_synced' => $video->is_synced,
+            'wordpress_id' => $video->wordpress_id,
             'status'    => $video->getStatus(),
             'vimeo_id' => $video->vimeo_id,
             'title' => $video->title,

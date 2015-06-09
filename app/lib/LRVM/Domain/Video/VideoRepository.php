@@ -36,6 +36,15 @@ interface VideoRepository {
      */
     public function markSynced($id);
 
+    /**
+     * Link a Wordpress post to the video
+     *
+     * @param int $id Video ID
+     * @param int $postId Post ID
+     * @return bool
+     */
+    public function linkPost($id, $postId);
+
 }
 
 ?>
