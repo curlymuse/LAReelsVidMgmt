@@ -62,9 +62,13 @@ class ApiVideosController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
+	public function show($id) {
+
+        $video = $this->rVideo->find($id);
+        $json = $this->rVideo->present($video);
+
+        return Response::json($json);
+
 	}
 
 	/**

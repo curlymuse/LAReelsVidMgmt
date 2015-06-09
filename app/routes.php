@@ -33,14 +33,36 @@ Route::group(['prefix' => 'auth'], function() {
 });
 
 Route::group(['prefix' => 'api'], function(){
-    Route::get('/all', [
-        'as' => 'api.videos.all',
-        'uses' => 'ApiVideosController@index',
-    ]);
-    Route::get('/marksynced/{id}', [
-        'as' => 'api.videos.marksynced',
-        'uses' => 'ApiVideosController@update',
-    ]);
+
+    Route::group(['before' => 'api.auth'], function() {
+        Route::post('/all', [
+            'as' => 'api.videos.all',
+            'uses' => 'ApiVideosController@index',
+        ]);
+        Route::post('/{id}/get', [
+            'as' => 'api.videos.get',
+            'uses' => 'ApiVideosController@show',
+        ]);
+        Route::post('{id}/marksynced', [
+            'as' => 'api.videos.marksynced',
+            'uses' => 'ApiVideosController@update',
+        ]);
+    });
+
+    if (App::environment() == 'local') {
+        Route::get('/all', [
+            'as' => 'api.videos.all',
+            'uses' => 'ApiVideosController@index',
+        ]);
+        Route::get('/{id}/get', [
+            'as' => 'api.videos.get',
+            'uses' => 'ApiVideosController@show',
+        ]);
+        Route::get('{id}/marksynced', [
+            'as' => 'api.videos.marksynced',
+            'uses' => 'ApiVideosController@update',
+        ]);
+    }
 });
 
 Route::group(['prefix' => 'lrvm'], function() {

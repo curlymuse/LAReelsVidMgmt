@@ -70,6 +70,14 @@ Route::filter('guest', function()
 	if (Auth::check()) return Redirect::to('/');
 });
 
+Route::filter('api.auth', function(){
+
+    $key = Input::get('key');
+    if ($key != Config::get('lrvm.api_key'))
+        return Response::json(['error' => 'auth']);
+
+});
+
 /*
 |--------------------------------------------------------------------------
 | CSRF Protection Filter
