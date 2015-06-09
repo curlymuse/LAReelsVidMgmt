@@ -66,13 +66,13 @@ class Video extends Eloquent {
      */
     public function getStatus() {
 
-        if (!$this->wordpress_id)
+        if (!$this->wordpress_post_id)
             return 'Not Integrated';
 
         if (!$this->synced_at)
             return 'Pending Sync';
 
-        return ($this->is_pubilc) ? 'Public' :'Unlisted';
+        return ($this->is_public) ? 'Live' :'Unlisted';
 
     }
 
