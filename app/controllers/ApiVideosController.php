@@ -26,7 +26,7 @@ class ApiVideosController extends \BaseController {
 	 */
 	public function index() {
 
-        $videos = $this->rVideo->all();
+        $videos = $this->rVideo->allActiveWithCategories();
 
         $response = ['videos' => $videos];
         return Response::json($response);
