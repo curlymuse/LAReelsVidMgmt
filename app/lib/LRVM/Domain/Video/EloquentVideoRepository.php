@@ -2,6 +2,7 @@
 
 namespace LRVM\Domain\Video;
 
+use Event;
 use LRVM\Core\EloquentRepository;
 use LRVM\Domain\Category\Category;
 use LRVM\Domain\Video\Video;
@@ -45,6 +46,8 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
 
         $oVideo->save();
 
+        Event::fire('video.touched', $oVideo);
+
     }
 
     /**
@@ -70,6 +73,8 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
         $video = $this->find($id);
         $video->is_public = !$video->is_public;
         $video->save();
+
+        Event::fire('video.touched', $video);
 
         return $video->is_public;
 

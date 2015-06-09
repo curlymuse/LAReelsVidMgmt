@@ -108,7 +108,7 @@ var VideoList = Class.extend({
         statusButton.removeClass('btn-warning')
             .addClass('btn-success')
             .prop('disabled', true)
-            .html('Synced');
+            .html('Saved');
     },
 
     saveCategories: function(videoID) {

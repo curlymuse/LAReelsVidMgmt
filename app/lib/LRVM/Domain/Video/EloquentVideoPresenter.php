@@ -6,14 +6,15 @@ class EloquentVideoPresenter extends EloquentVideoRepository {
 
     public function allActiveWithCategories() {
 
-        $raw = $this->model->whereIsPublic(true)->with('categories')->get();
+        $raw = $this->model->with('categories')->get();
         $return = [];
 
         foreach ($raw as $obj) {
             $row = [
                 'id'    => $obj->id,
                 'is_public' => $obj->is_public,
-                'is_ingested' => $obj->is_ingested,
+                'is_synced' => $obj->is_synced,
+                'status'    => $obj->getStatus(),
                 'vimeo_id' => $obj->vimeo_id,
                 'title' => $obj->title,
                 'link'  => sprintf('https://vimeo.com/%s', $obj->vimeo_id),

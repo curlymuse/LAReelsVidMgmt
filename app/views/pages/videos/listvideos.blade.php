@@ -41,7 +41,7 @@
             @endforeach
                 <br/><br/>
                 <p class="pull-right">
-                    <button type="button" class="btn btn-xs btn-success statusButton" aria-pressed="false" disabled="disabled" data-video-id="{{ $video->id }}">Synced</button>
+                    <button type="button" class="btn btn-xs btn-success statusButton" aria-pressed="false" disabled="disabled" data-video-id="{{ $video->id }}">Saved</button>
                 </p>
             </td>
             <td>

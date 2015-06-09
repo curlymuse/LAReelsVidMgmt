@@ -3,6 +3,8 @@
 namespace LRVM\Domain\Video;
 
 use Eloquent;
+
+use Event;
 use LRVM\Domain\Category\Category;
 
 class Video extends Eloquent {
@@ -13,6 +15,17 @@ class Video extends Eloquent {
     protected $table = 'lrvm_videos';
 
 	protected $fillable = ['title', 'vimeo_id', 'description', 'thumbnail_url'];
+
+    /**
+     * Register event observers
+     */
+    public static function boot() {
+
+        parent::boot();
+
+        Event::subscribe(new VideoEventHandler);
+
+    }
 
     /**
      * Format Vimeo Link from ID
@@ -43,6 +56,23 @@ class Video extends Eloquent {
     public function getPublicStatus() {
 
         return ($this->is_public) ? 'Public' : 'Private';
+
+    }
+
+    /**
+     * Get status, based on combination of public and ingested
+     *
+     * @return string
+     */
+    public function getStatus() {
+
+        if (!$this->wordpress_id)
+            return 'Not Integrated';
+
+        if (!$this->synced_at)
+            return 'Pending Sync';
+
+        return ($this->is_pubilc) ? 'Public' :'Unlisted';
 
     }
 
