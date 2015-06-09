@@ -18,12 +18,6 @@ class RepositoryServiceProvider extends ServiceProvider {
       $this->app->bind('LRVM\Domain\Category\CategoryRepository', function($app){
           return new EloquentCategoryRepository(new Category);
       });
-      /**
-    $this->app->bind(
-      'UThrive\Storage\Support\Statistics',
-      'UThrive\Storage\Support\EloquentStatisticsPresenter'
-    );
-       */
 
   }
 

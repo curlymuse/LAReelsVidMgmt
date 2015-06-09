@@ -12,6 +12,8 @@ class EloquentVideoPresenter extends EloquentVideoRepository {
         foreach ($raw as $obj) {
             $row = [
                 'id'    => $obj->id,
+                'is_public' => $obj->is_public,
+                'is_ingested' => $obj->is_ingested,
                 'vimeo_id' => $obj->vimeo_id,
                 'title' => $obj->title,
                 'link'  => sprintf('https://vimeo.com/%s', $obj->vimeo_id),
