@@ -33,7 +33,7 @@ Route::group(['prefix' => 'auth'], function() {
 });
 
 Route::group(['prefix' => 'api'], function(){
-    Route::get('/all', [
+    Route::post('/all', [
         'as' => 'api.videos.all',
         'uses' => 'ApiVideosController@index',
     ]);
