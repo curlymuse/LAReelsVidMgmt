@@ -29,7 +29,7 @@ class ApiVideosController extends \BaseController {
         $videos = $this->rVideo->allActiveWithCategories();
 
         $response = ['videos' => $videos];
-        return Response::json($response);
+        return $this->_succeed($response);
 
 	}
 
@@ -65,9 +65,11 @@ class ApiVideosController extends \BaseController {
 	public function show($id) {
 
         $video = $this->rVideo->find($id);
-        $json = $this->rVideo->present($video);
+        $response = [
+            'video' => $this->rVideo->present($video)
+        ];
 
-        return Response::json($json);
+        return $this->_succeed($response);
 
 	}
 
@@ -94,7 +96,7 @@ class ApiVideosController extends \BaseController {
 
         $this->rVideo->markSynced($id);
 
-        return Response::json(['success' => true]);
+        return $this->_succeed();
 
 	}
 
@@ -109,5 +111,31 @@ class ApiVideosController extends \BaseController {
 	{
 		//
 	}
+
+    /**
+     * Return JSON with error message
+     *
+     * @param $msg
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function _fail($msg) {
+
+        $response = ['success' => false, 'error'];
+        return Response::json($response);
+
+    }
+
+    /**
+     * Add success as a param and return as JSON
+     *
+     * @param $params (optional)
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function _succeed($params = []) {
+
+        $params['success'] = true;
+        return Response::json($params);
+
+    }
 
 }
