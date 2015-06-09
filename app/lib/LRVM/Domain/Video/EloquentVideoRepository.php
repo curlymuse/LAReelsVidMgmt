@@ -21,11 +21,12 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
     /**
      * Paginated results
      *
+     * @param int $paginate
      * @return mixed
      */
-    public function all() {
+    public function allPaginate($paginate) {
 
-        return $this->model->paginate(20);
+        return $this->model->paginate($paginate);
 
     }
 

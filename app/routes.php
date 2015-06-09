@@ -32,6 +32,13 @@ Route::group(['prefix' => 'auth'], function() {
     ]);
 });
 
+Route::group(['prefix' => 'api'], function(){
+    Route::get('/all', [
+        'as' => 'api.videos.all',
+        'uses' => 'ApiVideosController@index',
+    ]);
+});
+
 
 Route::group(['prefix' => 'lrvm'], function() {
     Route::get('/', [
