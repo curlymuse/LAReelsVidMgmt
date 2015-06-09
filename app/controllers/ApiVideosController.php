@@ -86,9 +86,12 @@ class ApiVideosController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update($id) {
+
+        $this->rVideo->markSynced($id);
+
+        return Response::json(['success' => true]);
+
 	}
 
 	/**

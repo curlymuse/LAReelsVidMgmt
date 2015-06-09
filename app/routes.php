@@ -37,6 +37,10 @@ Route::group(['prefix' => 'api'], function(){
         'as' => 'api.videos.all',
         'uses' => 'ApiVideosController@index',
     ]);
+    Route::get('/marksynced/{id}', [
+        'as' => 'api.videos.marksynced',
+        'uses' => 'ApiVideosController@update',
+    ]);
 });
 
 Route::group(['prefix' => 'lrvm'], function() {

@@ -79,4 +79,18 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
         return $video->is_public;
 
     }
+
+    /**
+     * Mark a video as synced
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function markSynced($id) {
+
+        $video = $this->find($id);
+        $video->synced_at = date('Y-m-d H:i:s');
+        $video->save();
+
+    }
 }

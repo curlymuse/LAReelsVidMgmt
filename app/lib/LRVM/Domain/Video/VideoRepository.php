@@ -28,6 +28,14 @@ interface VideoRepository {
      */
     public function togglePublic($id);
 
+    /**
+     * Mark a video as synced
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function markSynced($id);
+
 }
 
 ?>
