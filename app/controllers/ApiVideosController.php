@@ -1,8 +1,9 @@
 <?php
 
+use LRVM\Core\ApiController;
 use LRVM\Domain\Video\VideoRepository;
 
-class ApiVideosController extends \BaseController {
+class ApiVideosController extends ApiController {
 
     /**
      * @var VideoRepository
@@ -114,31 +115,5 @@ class ApiVideosController extends \BaseController {
 	{
 		//
 	}
-
-    /**
-     * Return JSON with error message
-     *
-     * @param $msg
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    private function _fail($msg) {
-
-        $response = ['success' => false, 'error'];
-        return Response::json($response);
-
-    }
-
-    /**
-     * Add success as a param and return as JSON
-     *
-     * @param $params (optional)
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    private function _succeed($params = []) {
-
-        $params['success'] = true;
-        return Response::json($params);
-
-    }
 
 }

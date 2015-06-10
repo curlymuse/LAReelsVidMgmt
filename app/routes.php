@@ -51,6 +51,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.videos.linkpost',
             'uses' => 'ApiVideosController@store',
         ]);
+        Route::post('categories/pull', [
+            'as' => 'api.categories.index',
+            'uses' => 'ApiVideosController@index',
+        ]);
     });
 
     if (App::environment() == 'local') {
@@ -69,6 +73,10 @@ Route::group(['prefix' => 'api'], function(){
         Route::get('{id}/linkpost/{postId}', [
             'as' => 'api.videos.linkpost',
             'uses' => 'ApiVideosController@store',
+        ]);
+        Route::get('categories/pull', [
+            'as' => 'api.categories.index',
+            'uses' => 'ApiCategoriesController@index',
         ]);
     }
 });
