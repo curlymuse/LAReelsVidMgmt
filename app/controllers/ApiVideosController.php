@@ -118,4 +118,16 @@ class ApiVideosController extends ApiController {
 
 	}
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return Response
+     */
+    public function destroyAll() {
+
+        $this->rVideo->resetAll();
+        return $this->_succeed();
+
+    }
+
 }

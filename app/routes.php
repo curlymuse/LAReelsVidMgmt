@@ -11,6 +11,9 @@
 |
 */
 
+//  All routes with ID require integer value
+Route::pattern('id', '[0-9]+');
+
 
 Route::get('/logout', ['as' => 'logout', function(){
     Auth::logout();
@@ -51,6 +54,14 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.videos.linkpost',
             'uses' => 'ApiVideosController@store',
         ]);
+        Route::post('{id}/reset', [
+            'as' => 'api.videos.resetOne',
+            'uses' => 'ApiVideosController@destroy',
+        ]);
+        Route::post('all/reset', [
+            'as' => 'api.videos.resetAll',
+            'uses' => 'ApiVideosController@destroyAll',
+        ]);
         Route::post('categories/pull', [
             'as' => 'api.categories.index',
             'uses' => 'ApiCategoriesController@index',
@@ -62,10 +73,6 @@ Route::group(['prefix' => 'api'], function(){
         Route::post('categories/{id}/sync/{wpId}', [
             'as' => 'api.categories.update',
             'uses' => 'ApiCategoriesController@update',
-        ]);
-        Route::post('{id}/reset', [
-            'as' => 'api.videos.resetOne',
-            'uses' => 'ApiVideosController@destroy',
         ]);
     });
 
@@ -86,6 +93,14 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.videos.linkpost',
             'uses' => 'ApiVideosController@store',
         ]);
+        Route::get('{id}/reset', [
+            'as' => 'api.videos.resetOne',
+            'uses' => 'ApiVideosController@destroy',
+        ]);
+        Route::get('all/reset', [
+            'as' => 'api.videos.resetAll',
+            'uses' => 'ApiVideosController@destroyAll',
+        ]);
         Route::get('categories/pull', [
             'as' => 'api.categories.index',
             'uses' => 'ApiCategoriesController@index',
@@ -97,10 +112,6 @@ Route::group(['prefix' => 'api'], function(){
         Route::get('categories/{id}/sync/{wpId}', [
             'as' => 'api.categories.update',
             'uses' => 'ApiCategoriesController@update',
-        ]);
-        Route::get('{id}/reset', [
-            'as' => 'api.videos.resetOne',
-            'uses' => 'ApiVideosController@destroy',
         ]);
     }
 });

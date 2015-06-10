@@ -54,6 +54,14 @@ interface VideoRepository {
      */
     public function reset($id);
 
+    /**
+     * Reset the sync status and WordPress ID
+     * for all videos
+     *
+     * @return bool
+     */
+    public function resetAll();
+
 }
 
 ?>

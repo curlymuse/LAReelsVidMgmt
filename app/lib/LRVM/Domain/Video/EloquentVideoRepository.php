@@ -124,4 +124,19 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
         return $video->save();
 
     }
+
+    /**
+     * Reset the sync status and WordPress ID
+     * for all videos
+     *
+     * @return bool
+     */
+    public function resetAll() {
+
+        $this->model->whereNotNull('wordpress_post_id')->update([
+            'synced_at'     => NULL,
+            'wordpress_post_id' => NULL
+        ]);
+
+    }
 }
