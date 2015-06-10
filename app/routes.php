@@ -55,6 +55,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.categories.index',
             'uses' => 'ApiCategoriesController@index',
         ]);
+        Route::post('categories/{id}/get', [
+            'as' => 'api.categories.show',
+            'uses' => 'ApiCategoriesController@show',
+        ]);
     });
 
     if (App::environment() == 'local') {
