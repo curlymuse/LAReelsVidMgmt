@@ -45,6 +45,15 @@ interface VideoRepository {
      */
     public function linkPost($id, $postId);
 
+    /**
+     * Reset the sync status and WordPress ID
+     * for a single video
+     *
+     * @param int $id Video ID
+     * @return bool
+     */
+    public function reset($id);
+
 }
 
 ?>

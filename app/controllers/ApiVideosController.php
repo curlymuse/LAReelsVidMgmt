@@ -111,9 +111,11 @@ class ApiVideosController extends ApiController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
+	public function destroy($id) {
+
+        $this->rVideo->reset($id);
+        return $this->_succeed();
+
 	}
 
 }

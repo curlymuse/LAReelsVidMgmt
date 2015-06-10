@@ -63,6 +63,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.categories.update',
             'uses' => 'ApiCategoriesController@update',
         ]);
+        Route::post('{id}/reset', [
+            'as' => 'api.videos.resetOne',
+            'uses' => 'ApiVideosController@destroy',
+        ]);
     });
 
     if (App::environment() == 'local') {
@@ -93,6 +97,10 @@ Route::group(['prefix' => 'api'], function(){
         Route::get('categories/{id}/sync/{wpId}', [
             'as' => 'api.categories.update',
             'uses' => 'ApiCategoriesController@update',
+        ]);
+        Route::get('{id}/reset', [
+            'as' => 'api.videos.resetOne',
+            'uses' => 'ApiVideosController@destroy',
         ]);
     }
 });

@@ -90,7 +90,7 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
 
         $video = $this->find($id);
         $video->synced_at = date('Y-m-d H:i:s');
-        $video->save();
+        return $video->save();
 
     }
 
@@ -105,7 +105,23 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
 
         $video = $this->find($id);
         $video->wordpress_post_id = $postId;
-        $video->save();
+        return $video->save();
+
+    }
+
+    /**
+     * Reset the sync status and WordPress ID
+     * for a single video
+     *
+     * @param int $id Video ID
+     * @return bool
+     */
+    public function reset($id) {
+
+        $video = $this->find($id);
+        $video->synced_at = NULL;
+        $video->wordpress_post_id = NULL;
+        return $video->save();
 
     }
 }
