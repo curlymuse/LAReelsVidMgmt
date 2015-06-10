@@ -5,12 +5,30 @@ namespace LRVM\Domain\Video;
 interface VideoRepository {
 
     /**
+     * Find by Vimeo ID
+     *
+     * @param int $vimeoId
+     * @return Video
+     */
+    public function findByVimeoId($vimeoId);
+
+    /**
      * Update categories on a video
      *
      * @param int $iVideo
      * @param array<int> $categories
      */
     public function saveCategories($iVideo, $categories);
+
+    /**
+     * Update thumbnail
+     *
+     * @param int $id
+     * @param string $thumbnail
+     * @param string $main
+     * @return boolean
+     */
+    public function updateImages($id, $thumbnail, $main);
 
     /**
      * Check if a video exists based on vimeo ID

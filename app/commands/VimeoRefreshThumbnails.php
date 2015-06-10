@@ -5,14 +5,14 @@ use LRVM\Domain\Video\VideoRepository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class FetchVimeoAll extends Command {
+class VimeoRefreshThumbnails extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'lrvm:vimeo-fetch';
+	protected $name = 'lrvm:vimeo-refresh-thumbnails';
 
     /**
      * Video Repository
@@ -26,7 +26,7 @@ class FetchVimeoAll extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Fetch videos remotely from Vimeo.';
+	protected $description = 'Command description.';
 
     /**
      * Create a new command instance.
@@ -77,20 +77,15 @@ class FetchVimeoAll extends Command {
                 foreach ($response['body']['data'] as $video) {
 
                     $vimeoId = str_replace('/videos/', '', $video['uri']);
+                    $oVideo = $this->rVideo->findByVimeoId($vimeoId);
 
-                    //  Do not insert video if it already exists in database
-                    if ($this->rVideo->vimeoIdExists($vimeoId))
+                    //  If this does not already exist, then move on
+                    if (!$oVideo)
                         continue;
 
                     $thumbnail = $video['pictures']['sizes'][0]['link'];
                     $main = $video['pictures']['sizes'][count($video['pictures']['sizes']) - 1]['link'];
-                    $data = [
-                        'vimeo_id' => $vimeoId,
-                        'title' => $video['name'],
-                        'thumbnail_url' => $thumbnail,
-                        'main_image_url' => $main,
-                    ];
-                    $this->rVideo->store($data);
+                    $this->rVideo->updateImages($oVideo->id, $thumbnail, $main);
 
                 }
 
@@ -105,7 +100,7 @@ class FetchVimeoAll extends Command {
 
         $this->info('Finishing.');
 
-		//
+
 	}
 
 	/**

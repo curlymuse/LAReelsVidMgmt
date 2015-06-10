@@ -20,6 +20,35 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
     }
 
     /**
+     * Find by Vimeo ID
+     *
+     * @param int $vimeoId
+     * @return Video
+     */
+    public function findByVimeoId($vimeoId) {
+
+        return $this->model->where('vimeo_id', $vimeoId)->first();
+
+    }
+
+    /**
+     * Update thumbnail
+     *
+     * @param int $id
+     * @param string $thumbnail
+     * @param string $main
+     * @return boolean
+     */
+    public function updateImages($id, $thumbnail, $main) {
+
+        $video = $this->find($id);
+        $video->thumbnail_url = $thumbnail;
+        $video->main_image_url = $main;
+        $video->save();
+
+    }
+
+    /**
      * Paginated results
      *
      * @param int $paginate
@@ -139,4 +168,5 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
         ]);
 
     }
+
 }
