@@ -51,7 +51,7 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.videos.linkpost',
             'uses' => 'ApiVideosController@store',
         ]);
-        Route::get('categories/pull', [
+        Route::post('categories/pull', [
             'as' => 'api.categories.index',
             'uses' => 'ApiCategoriesController@index',
         ]);
