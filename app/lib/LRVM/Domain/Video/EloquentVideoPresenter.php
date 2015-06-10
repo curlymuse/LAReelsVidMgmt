@@ -39,6 +39,7 @@ class EloquentVideoPresenter extends EloquentVideoRepository {
             'status'    => $video->getStatus(),
             'vimeo_id' => $video->vimeo_id,
             'title' => $video->title,
+            'thumbnail_url' => $video->thumbnail_url,
             'link'  => sprintf('https://vimeo.com/%s', $video->vimeo_id),
             'unsynced_category' => false,
             'catIDs' => [],

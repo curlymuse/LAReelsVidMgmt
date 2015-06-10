@@ -85,7 +85,7 @@ class FetchVimeoAll extends Command {
                     $data = [
                         'vimeo_id' => $vimeoId,
                         'title' => $video['name'],
-                        'thumbnail_url' => $video['pictures']['sizes'][0]['link']
+                        'thumbnail_url' => $video['pictures']['sizes'][3]['link']
                     ];
                     $this->rVideo->store($data);
 
