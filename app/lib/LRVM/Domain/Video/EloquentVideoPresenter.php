@@ -40,10 +40,18 @@ class EloquentVideoPresenter extends EloquentVideoRepository {
             'vimeo_id' => $video->vimeo_id,
             'title' => $video->title,
             'link'  => sprintf('https://vimeo.com/%s', $video->vimeo_id),
-            'categories' => []
+            'unsynced_category' => false,
+            'catIDs' => [],
+            'categories' => [],
         ];
-        foreach ($video->categories as $cat)
+        foreach ($video->categories as $cat) {
             $return['categories'][] = $cat->title;
+            if ($cat->wordpress_category_id)
+                $return['catIDs'][] = $cat->wordpress_category_id;
+            else
+                $return['unsynced_category'] = true;
+        }
+
 
         return $return;
 
