@@ -18,4 +18,13 @@ interface CategoryRepository {
      */
     function allGenres();
 
+    /**
+     * Link category to WP equivalent
+     *
+     * @param $id
+     * @param $wpId
+     * @return mixed
+     */
+    function linkWPCategory($id, $wpId);
+
 }

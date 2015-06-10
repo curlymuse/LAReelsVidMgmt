@@ -38,4 +38,19 @@ class EloquentCategoryRepository extends EloquentRepository implements CategoryR
         return $this->model->whereIsPrimary(false)->get();
 
     }
+
+    /**
+     * Link category to WP equivalent
+     *
+     * @param $id
+     * @param $wpId
+     * @return mixed
+     */
+    function linkWPCategory($id, $wpId) {
+
+        $cat = $this->find($id);
+        $cat->wordpress_category_id = $wpId;
+        $cat->save();
+
+    }
 }

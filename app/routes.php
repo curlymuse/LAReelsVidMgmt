@@ -59,6 +59,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.categories.show',
             'uses' => 'ApiCategoriesController@show',
         ]);
+        Route::post('categories/{id}/sync/{wpId}', [
+            'as' => 'api.categories.update',
+            'uses' => 'ApiCategoriesController@update',
+        ]);
     });
 
     if (App::environment() == 'local') {
@@ -85,6 +89,10 @@ Route::group(['prefix' => 'api'], function(){
         Route::get('categories/{id}/get', [
             'as' => 'api.categories.show',
             'uses' => 'ApiCategoriesController@show',
+        ]);
+        Route::get('categories/{id}/sync/{wpId}', [
+            'as' => 'api.categories.update',
+            'uses' => 'ApiCategoriesController@update',
         ]);
     }
 });

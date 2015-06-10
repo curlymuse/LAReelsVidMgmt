@@ -87,16 +87,18 @@ class ApiCategoriesController extends ApiController {
 		//
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /apicategories/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
+    /**
+     * Link the WP category in the database
+     *
+     * @param int $id
+     * @param int $wpId
+     * @return Response
+     */
+	public function update($id, $wpId) {
+
+        $this->rCat->linkWPCategory($id, $wpId);
+        return $this->_succeed();
+
 	}
 
 	/**
