@@ -78,6 +78,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.categories.index',
             'uses' => 'ApiCategoriesController@index',
         ]);
+        Route::get('categories/{id}/get', [
+            'as' => 'api.categories.show',
+            'uses' => 'ApiCategoriesController@show',
+        ]);
     }
 });
 

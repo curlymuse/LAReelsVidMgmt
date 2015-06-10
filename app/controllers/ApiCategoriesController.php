@@ -66,9 +66,13 @@ class ApiCategoriesController extends ApiController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
+	public function show($id) {
+
+        $cat = $this->rCat->find($id);
+
+        $response = ['category' => $cat];
+        return $this->_succeed($response);
+
 	}
 
 	/**
