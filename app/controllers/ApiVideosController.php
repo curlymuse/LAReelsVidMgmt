@@ -119,6 +119,22 @@ class ApiVideosController extends ApiController {
 
 	}
 
+    /**
+     * Update the specified resource in storage.
+     * PUT /apivideos/{id}
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function updateAll() {
+
+        $toSync = Input::get('toSync');
+
+        $this->rVideo->batchMarkSynced($toSync);
+        return $this->_succeed();
+
+    }
+
 	/**
 	 * Remove the specified resource from storage.
 	 * DELETE /apivideos/{id}

@@ -55,6 +55,15 @@ interface VideoRepository {
     public function markSynced($id);
 
     /**
+     * Mark an array of videos as synced, and associate
+     * WP ID
+     *
+     * @param array<int,int> $toSync
+     * @return mixed
+     */
+    public function batchMarkSynced($toSync);
+
+    /**
      * Link a Wordpress post to the video
      *
      * @param int $id Video ID

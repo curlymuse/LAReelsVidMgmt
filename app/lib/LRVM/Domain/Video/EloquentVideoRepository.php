@@ -169,4 +169,19 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
 
     }
 
+    /**
+     * Mark an array of videos as synced, and associate
+     * WP ID
+     *
+     * @param array <int,int> $toSync
+     * @return mixed
+     */
+    public function batchMarkSynced($toSync) {
+
+        foreach ($toSync as $id => $postId) {
+            $this->markSynced($id);
+            $this->linkPost($id, $postId);
+        }
+
+    }
 }

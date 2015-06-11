@@ -54,6 +54,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.videos.marksynced',
             'uses' => 'ApiVideosController@update',
         ]);
+        Route::post('batchmarksynced', [
+            'as' => 'api.videos.batchmarksynced',
+            'uses' => 'ApiVideosController@updateAll',
+        ]);
         Route::post('{id}/linkpost/{postId}', [
             'as' => 'api.videos.linkpost',
             'uses' => 'ApiVideosController@store',
@@ -96,6 +100,10 @@ Route::group(['prefix' => 'api'], function(){
         Route::get('{id}/marksynced', [
             'as' => 'api.videos.marksynced',
             'uses' => 'ApiVideosController@update',
+        ]);
+        Route::get('batchmarksynced', [
+            'as' => 'api.videos.batchmarksynced',
+            'uses' => 'ApiVideosController@updateAll',
         ]);
         Route::get('{id}/linkpost/{postId}', [
             'as' => 'api.videos.linkpost',
