@@ -42,6 +42,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.videos.all',
             'uses' => 'ApiVideosController@index',
         ]);
+        Route::post('/unsynced', [
+            'as' => 'api.videos.allUnsynced',
+            'uses' => 'ApiVideosController@unsyncedIndex',
+        ]);
         Route::post('/{id}/get', [
             'as' => 'api.videos.get',
             'uses' => 'ApiVideosController@show',
@@ -80,6 +84,10 @@ Route::group(['prefix' => 'api'], function(){
         Route::get('/all', [
             'as' => 'api.videos.all',
             'uses' => 'ApiVideosController@index',
+        ]);
+        Route::get('/unsynced', [
+            'as' => 'api.videos.allUnsynced',
+            'uses' => 'ApiVideosController@unsyncedIndex',
         ]);
         Route::get('/{id}/get', [
             'as' => 'api.videos.get',

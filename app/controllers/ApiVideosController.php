@@ -34,6 +34,21 @@ class ApiVideosController extends ApiController {
 
 	}
 
+    /**
+     * Display a listing of the resource.
+     * GET /apivideos
+     *
+     * @return Response
+     */
+    public function unsyncedIndex() {
+
+        $videos = $this->rVideo->allUnsyncedWithCategories();
+
+        $response = ['videos' => $videos];
+        return $this->_succeed($response);
+
+    }
+
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /apivideos/create

@@ -23,6 +23,24 @@ class EloquentVideoPresenter extends EloquentVideoRepository {
     }
 
     /**
+     * Return all unsynced videos, including categories,
+     * formatted for use in exterior application (JSON)
+     *
+     * @return array
+     */
+    public function allUnsyncedWithCategories() {
+
+        $raw = $this->model->whereNull('synced_at')->with('categories')->get();
+        $return = [];
+
+        foreach ($raw as $obj)
+            $return[] = $this->present($obj);
+
+        return $return;
+
+    }
+
+    /**
      * Return a JSON representation of the video, including
      * categories
      *
