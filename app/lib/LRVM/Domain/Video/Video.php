@@ -16,8 +16,18 @@ class Video extends Eloquent {
 
 	protected $fillable = [
         'title', 'vimeo_id', 'description',
-        'thumbnail_url', 'main_image_url'
+        'thumbnail_url', 'main_image_url',
+        'uploaded_at',
     ];
+
+    /**
+     * Data-format fields
+     */
+    public function getDates() {
+
+        return ['uploaded_at', 'synced_at'];
+
+    }
 
     /**
      * Register event observers

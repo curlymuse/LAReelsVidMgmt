@@ -73,6 +73,16 @@ interface VideoRepository {
     public function linkPost($id, $postId);
 
     /**
+     * Update basic meta info (meant to be done automatically
+     * from Vimeo Fetch)
+     *
+     * @param int $id Video ID
+     * @param array $data
+     * @return boolean
+     */
+    public function update($id, $data);
+
+    /**
      * Reset the sync status and WordPress ID
      * for a single video
      *

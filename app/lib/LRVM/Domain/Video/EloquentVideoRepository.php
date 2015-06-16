@@ -184,4 +184,24 @@ class EloquentVideoRepository extends EloquentRepository implements VideoReposit
         }
 
     }
+
+    /**
+     * Update basic meta info (meant to be done automatically
+     * from Vimeo Fetch)
+     *
+     * @param int $id Video ID
+     * @param array $data
+     * @return boolean
+     */
+    public function update($id, $data) {
+
+        $video = $this->find($id);
+        foreach ($data as $key => $value)
+            $video->$key = $value;
+
+        Event::fire('video.touched', $video);
+
+        return $video->save();
+
+    }
 }
