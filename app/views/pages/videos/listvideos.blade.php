@@ -25,7 +25,9 @@
             </td>
             <td>
                 <a href="{{ $video->getLink() }}" target="_blank">{{ $video->getLink() }}</a><br/><br/>
+            @if ($video->uploaded_at)
                 (uploaded on {{ $video->uploaded_at->format('M d, Y') }})
+            @endif
             </td>
             </td>
             <td class="cat-set" id="v_{{ $video->id}}" data-video-id="{{ $video->id }}" data-orig-cats='{{ json_encode($video->categories()->lists('category_id')) }}'>
