@@ -39,27 +39,6 @@ class ApiCategoriesController extends ApiController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 * GET /apicategories/create
-	 *
-	 * @return Response
-	 */
-	public function create() {
-		//
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /apicategories
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
 	 * Display the specified resource.
 	 * GET /apicategories/{id}
 	 *
@@ -75,18 +54,6 @@ class ApiCategoriesController extends ApiController {
 
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /apicategories/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
     /**
      * Link the WP category in the database
      *
@@ -99,18 +66,6 @@ class ApiCategoriesController extends ApiController {
         $this->rCat->linkWPCategory($id, $wpId);
         return $this->_succeed();
 
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /apicategories/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 }

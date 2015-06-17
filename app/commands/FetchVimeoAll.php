@@ -84,10 +84,12 @@ class FetchVimeoAll extends Command {
 
                     $thumbnail = $video['pictures']['sizes'][0]['link'];
                     $main = $video['pictures']['sizes'][count($video['pictures']['sizes']) - 1]['link'];
+                    $date = date('Y-m-d H:i:s', strtotime($video['created_time']));
                     $data = [
                         'vimeo_id' => $vimeoId,
                         'title' => $video['name'],
                         'thumbnail_url' => $thumbnail,
+                        'uploaded_at' => $date,
                         'main_image_url' => $main,
                     ];
                     $this->rVideo->store($data);

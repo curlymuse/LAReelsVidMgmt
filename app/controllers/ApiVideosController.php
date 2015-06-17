@@ -49,17 +49,6 @@ class ApiVideosController extends ApiController {
 
     }
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /apivideos/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
     /**
      * Store the post ID for a video
      *
@@ -90,18 +79,6 @@ class ApiVideosController extends ApiController {
 
         return $this->_succeed($response);
 
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /apivideos/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
 	}
 
 	/**
