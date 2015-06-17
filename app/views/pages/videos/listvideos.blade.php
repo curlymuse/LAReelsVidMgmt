@@ -48,7 +48,10 @@
                 </p>
             </td>
             <td>
-                <img class="img-rounded" src="{{ $video->thumbnail_url }}" /><br/>
+                <img class="img-rounded" src="{{ $video->thumbnail_url }}" /><br/><br/>
+                @if (!$video->wordpress_post_id)
+                    <button type="button" class="btn btn-xs btn-primary" aria-pressed="false" disabled="disabled">New!</button>
+                @endif
             </td>
         </tr>
     @endforeach
