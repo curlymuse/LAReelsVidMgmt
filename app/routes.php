@@ -93,6 +93,22 @@ Route::group(['prefix' => 'podcasts', 'before' => 'auth'], function(){
         'as' => 'podcasts.index',
         'uses' => 'PodcastController@index',
     ]);
+    Route::get('/{id}/get', [
+        'as' => 'podcasts.show',
+        'uses' => 'PodcastController@show',
+    ]);
+    Route::get('/new', [
+        'as' => 'podcasts.create',
+        'uses' => 'PodcastController@create',
+    ]);
+    Route::post('/new', [
+        'as' => 'podcasts.store',
+        'uses' => 'PodcastController@store',
+    ]);
+    Route::get('/feed', [
+        'as' => 'podcasts.feed',
+        'uses' => 'PodcastController@feed',
+    ]);
 });
 
 Route::group(['prefix' => 'lrvm', 'before' => 'auth'], function() {
@@ -100,18 +116,6 @@ Route::group(['prefix' => 'lrvm', 'before' => 'auth'], function() {
         'as' => 'videos.index',
         'uses' => 'VideoController@index',
     ]);
-
-    /**
-    Route::get('/new', [
-        'as' => 'videos.create',
-        'uses' => 'VideoController@create',
-    ]);
-    Route::post('/new', [
-        'as' => 'videos.store',
-        'uses' => 'VideoController@store',
-    ]);
-    */
-
     Route::post('/updatepublic', [
         'as'    => 'videos.updatePublic',
         'uses' => 'VideoController@update',

@@ -1,6 +1,26 @@
 <?php
 
+use LRVM\Domain\Podcast\PodcastRepository;
+
 class PodcastController extends \BaseController {
+
+    /**
+     * Podcast Repository
+     *
+     * @var PodcastRepository
+     */
+    protected $rPodcast;
+
+    /**
+     * Inject dependencies
+     *
+     * @param PodcastRepository $rPodcast
+     */
+    public function __construct(PodcastRepository $rPodcast) {
+
+       $this->rPodcast = $rPodcast;
+
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -10,7 +30,8 @@ class PodcastController extends \BaseController {
 	 */
 	public function index() {
 
-        return View::make('pages.podcasts.index');
+        $podcasts = $this->rPodcast->all();
+        return View::make('pages.podcasts.index')->with(compact(['podcasts']));
 
 	}
 
@@ -20,10 +41,20 @@ class PodcastController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-		//
+	public function create() {
+
+        return View::make('pages.podcasts.create');
+
 	}
+
+    public function feed() {
+
+        $podcasts = $this->rPodcast->all();
+        $content = View::make('feeds.podcasts')->with(compact(['podcasts']));
+
+        return Response::make($content, 200)->header('Content-Type', 'text/xml');
+
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -31,9 +62,14 @@ class PodcastController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function store() {
+
+        $data = Input::only('title', 'description', 'episode_number', 'filename');
+
+        $this->rPodcast->store($data);
+
+        return Redirect::route('podcasts.index');
+
 	}
 
 	/**
@@ -43,9 +79,19 @@ class PodcastController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
+	public function show($id) {
+
+        $podcast = $this->rPodcast->find($id);
+
+        $path = Config::get('lrvm.podcast_dir') . '/' . $podcast->filename;
+
+        return Response::download($path, 'episode-'.$podcast->episode_number);
+
+        $response = Response::make($path, 200);
+        $response->header('Content-Type', 'audio/mpeg');
+
+        return $response;
+
 	}
 
 	/**
