@@ -32,5 +32,20 @@ class EloquentPodcastRepository extends EloquentRepository implements PodcastRep
         return $podcast->is_published;
 
     }
+
+
+    /**
+     * Get all published podcasts
+     *
+     * @return mixed
+     */
+    public function allPublished() {
+
+        return $this->model
+            ->where('is_published', true)
+            ->orderBy('episode_number', 'desc')
+            ->get();
+
+    }
 }
 
