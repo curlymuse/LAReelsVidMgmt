@@ -93,10 +93,6 @@ Route::group(['prefix' => 'podcasts', 'before' => 'auth'], function(){
         'as' => 'podcasts.index',
         'uses' => 'PodcastController@index',
     ]);
-    Route::get('/{id}/get', [
-        'as' => 'podcasts.show',
-        'uses' => 'PodcastController@show',
-    ]);
     Route::get('/new', [
         'as' => 'podcasts.create',
         'uses' => 'PodcastController@create',
@@ -105,11 +101,19 @@ Route::group(['prefix' => 'podcasts', 'before' => 'auth'], function(){
         'as' => 'podcasts.store',
         'uses' => 'PodcastController@store',
     ]);
+});
+
+Route::group(['prefix' => 'podcasts'], function(){
+    Route::get('/{id}/get', [
+        'as' => 'podcasts.show',
+        'uses' => 'PodcastController@show',
+    ]);
     Route::get('/feed', [
         'as' => 'podcasts.feed',
         'uses' => 'PodcastController@feed',
     ]);
 });
+
 
 Route::group(['prefix' => 'lrvm', 'before' => 'auth'], function() {
     Route::get('/', [
