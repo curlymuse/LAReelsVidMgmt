@@ -17,5 +17,20 @@ class EloquentPodcastRepository extends EloquentRepository implements PodcastRep
 
     }
 
+    /**
+     * Toggle published status of a podcast
+     *
+     * @param $id
+     * @return boolean
+     */
+    public function togglePublished($id) {
+
+        $podcast = $this->find($id);
+        $podcast->is_published = !$podcast->is_published;
+        $podcast->save();
+
+        return $podcast->is_published;
+
+    }
 }
 

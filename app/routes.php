@@ -101,6 +101,10 @@ Route::group(['prefix' => 'podcasts', 'before' => 'auth'], function(){
         'as' => 'podcasts.store',
         'uses' => 'PodcastController@store',
     ]);
+    Route::post('/togglepublish', [
+        'as' => 'podcasts.togglePublish',
+        'uses' => 'PodcastController@togglePublish',
+    ]);
 });
 
 Route::group(['prefix' => 'podcasts'], function(){

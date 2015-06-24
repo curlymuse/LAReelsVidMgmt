@@ -24,4 +24,10 @@ class Podcast extends Eloquent {
 
     }
 
+    public function getPublishedStatus() {
+
+        return ($this->is_published) ? 'Published' : 'Unpublished';
+
+    }
+
 }

@@ -87,12 +87,20 @@ class PodcastController extends \BaseController {
 
         return Response::download($path, 'episode-'.$podcast->episode_number);
 
-        $response = Response::make($path, 200);
-        $response->header('Content-Type', 'audio/mpeg');
-
-        return $response;
-
 	}
+
+    public function togglePublish() {
+
+        $podcastId = Input::get('podcastId');
+        $isPublished = $this->rPodcast->togglePublished($podcastId);
+
+        $data = [
+            'podcastId' => $podcastId,
+            'isPublished' => $isPublished
+        ];
+        return Response::json($data);
+
+    }
 
 	/**
 	 * Show the form for editing the specified resource.
