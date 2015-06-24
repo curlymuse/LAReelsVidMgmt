@@ -2,6 +2,10 @@
 
 @section('content')
 
+<div style="padding-bottom:25px;">
+    <button class="btn btn-lg btn-primary">Add New Podcast</button>
+</div>
+
 <table class="table table-bordered table-striped">
     <tr>
         <th>Episode #</th>
