@@ -88,11 +88,20 @@ Route::group(['prefix' => 'api'], function(){
 
 });
 
-Route::group(['prefix' => 'lrvm'], function() {
+Route::group(['prefix' => 'podcasts', 'before' => 'auth'], function(){
+    Route::get('/', [
+        'as' => 'podcasts.index',
+        'uses' => 'PodcastController@index',
+    ]);
+});
+
+Route::group(['prefix' => 'lrvm', 'before' => 'auth'], function() {
     Route::get('/', [
         'as' => 'videos.index',
         'uses' => 'VideoController@index',
     ]);
+
+    /**
     Route::get('/new', [
         'as' => 'videos.create',
         'uses' => 'VideoController@create',
@@ -101,6 +110,8 @@ Route::group(['prefix' => 'lrvm'], function() {
         'as' => 'videos.store',
         'uses' => 'VideoController@store',
     ]);
+    */
+
     Route::post('/updatepublic', [
         'as'    => 'videos.updatePublic',
         'uses' => 'VideoController@update',
