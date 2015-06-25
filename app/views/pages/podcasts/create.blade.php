@@ -13,7 +13,7 @@
         {{ Form::text('title', '', ['class' => 'form-control']) }}
     </div>
     <div class="form-group">
-        {{ Form::label('duration', 'Duration (HH:MM:SS') }}
+        {{ Form::label('duration', 'Duration (HH:MM:SS)') }}
         {{ Form::text('duration', '', ['class' => 'form-control']) }}
     </div>
     <div class="form-group">

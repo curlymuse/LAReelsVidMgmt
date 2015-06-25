@@ -190,7 +190,7 @@ class PodcastController extends \BaseController {
             'Key'   => $title
         ]);
 
-        $this->rPodcast->update($podcast->id, ['filename' => $result['ObjectURL']]);
+        $this->rPodcast->update($podcast->id, ['filename' => $title]);
 
         return Redirect::route('podcasts.index');
 
