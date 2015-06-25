@@ -23,7 +23,7 @@
         </itunes:category>
     @foreach ($podcasts as $podcast)
         <item>
-            <title>{{ $podcast->title }}</title>
+            <title>Episode #{{ $podcast->episode_number }}: {{ $podcast->title }}</title>
             <link>{{ $podcast->getLinkToFile() }}</link>
             <pubDate>{{ $podcast->created_at->format('D, d L Y H:i:s e') }}</pubDate>
             <description>{{ $podcast->description }}</description>
