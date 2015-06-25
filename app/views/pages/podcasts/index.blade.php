@@ -21,7 +21,8 @@
 @foreach ($podcasts as $podcast)
     <tr>
         <td>{{ $podcast->episode_number }}</td>
-        <td>{{ $podcast->title }}</td>
+        <td>
+            <a href="{{ URL::route('podcasts.show', $podcast->id) }}">{{ $podcast->title }}</a></td>
         <td>{{ $podcast->description }}</td>
         <td>{{ $podcast->duration }}</td>
         <td>

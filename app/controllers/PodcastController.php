@@ -84,8 +84,7 @@ class PodcastController extends \BaseController {
         $podcast = $this->rPodcast->find($id);
 
         $bucket = Config::get('lrvm.s3_podcast_bucket');
-        $endpoint = 'https://s3-us-west-1.amazonaws.com/'.$bucket.'/';
-        $key = str_replace($endpoint, '', $podcast->filename);
+        $key = $podcast->filename;
 
         $s3 = new Aws\S3\S3Client([
             'credentials' => [
@@ -96,10 +95,15 @@ class PodcastController extends \BaseController {
             'region' => 'us-west-1',
         ]);
 
-        $result = $s3->getObject([
-            'Bucket' => $bucket,
-            'Key' => $key,
-        ]);
+        try {
+            $result = $s3->getObject([
+                'Bucket' => $bucket,
+                'Key' => $key,
+            ]);
+        } catch (Exception $e) {
+            return Redirect::route('podcasts.index')->with('error', $e->getMessage());
+        }
+
         $contents = $result['Body'];
 
         return Response::make($contents, 200)->header('Content-Type', $result['ContentType']);
