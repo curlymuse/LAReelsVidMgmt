@@ -101,6 +101,14 @@ Route::group(['prefix' => 'podcasts', 'before' => 'auth'], function(){
         'as' => 'podcasts.store',
         'uses' => 'PodcastController@store',
     ]);
+    Route::get('/{id}/edit', [
+        'as' => 'podcasts.edit',
+        'uses' => 'PodcastController@edit',
+    ]);
+    Route::post('/{id}/edit', [
+        'as' => 'podcasts.update',
+        'uses' => 'PodcastController@update',
+    ]);
     Route::post('/togglepublish', [
         'as' => 'podcasts.togglePublish',
         'uses' => 'PodcastController@togglePublish',

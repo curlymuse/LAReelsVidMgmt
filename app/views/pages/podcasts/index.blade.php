@@ -14,7 +14,7 @@
         <th>Title</th>
         <th>Description</th>
         <th>Filename</th>
-        <th>Guest(s)</th>
+        <th></th>
         <th></th>
     </tr>
 @foreach ($podcasts as $podcast)
@@ -23,7 +23,7 @@
         <td>{{ $podcast->title }}</td>
         <td>{{ $podcast->description }}</td>
         <td>{{ $podcast->filename }}</td>
-        <td></td>
+        <td style="text-align:center;"><a href="{{ URL::route('podcasts.edit', $podcast->id) }}">Edit</a></td>
         <td style="text-align:center;">
             <button type="button" class="btn btn-xs btn-{{ ($podcast->is_published) ? 'success' : 'danger' }} publish-button" aria-pressed="false" data-podcast-id="{{ $podcast->id }}" id="pub_{{ $podcast->id }}">
                 {{ $podcast->getPublishedStatus() }}

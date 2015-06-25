@@ -46,6 +46,19 @@ abstract class EloquentRepository {
     }
 
     /**
+     * Update existing resource
+     *
+     * @param int $id
+     * @param array $input
+     * @return Object
+     */
+    public function update($id, array $input) {
+
+        return $this->model->whereId($id)->update($input);
+
+    }
+
+    /**
      * Get a single object
      *
      * @param int $id

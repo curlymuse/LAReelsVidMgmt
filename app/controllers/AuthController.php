@@ -44,7 +44,7 @@ class AuthController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /auth/{id}/edit
+	 * GET /auth/{id}/edit.blade.php
 	 *
 	 * @param  int  $id
 	 * @return Response

@@ -109,9 +109,11 @@ class PodcastController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
-		//
+	public function edit($id) {
+
+        $podcast = $this->rPodcast->find($id);
+        return View::make('pages.podcasts.edit')->with(compact(['podcast']));
+
 	}
 
 	/**
@@ -121,9 +123,13 @@ class PodcastController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update($id) {
+
+        $data = Input::only('title', 'description');
+        $this->rPodcast->update($id, $data);
+
+        return Redirect::route('podcasts.index');
+
 	}
 
 	/**
