@@ -85,7 +85,7 @@ class PodcastController extends \BaseController {
 
         $path = Config::get('lrvm.podcast_dir') . '/' . $podcast->filename;
 
-        return Response::download($path, 'episode-'.$podcast->episode_number);
+        return Response::download($path, 'episode-'.$podcast->episode_number.'.mp3');
 
 	}
 
