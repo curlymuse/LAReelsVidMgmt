@@ -13,7 +13,7 @@
         <th>Episode #</th>
         <th>Title</th>
         <th>Description</th>
-        <th>Filename</th>
+        <th>Duration</th>
         <th></th>
         <th></th>
     </tr>
@@ -22,7 +22,7 @@
         <td>{{ $podcast->episode_number }}</td>
         <td>{{ $podcast->title }}</td>
         <td>{{ $podcast->description }}</td>
-        <td>{{ $podcast->filename }}</td>
+        <td>{{ $podcast->duration }}</td>
         <td style="text-align:center;"><a href="{{ URL::route('podcasts.edit', $podcast->id) }}">Edit</a></td>
         <td style="text-align:center;">
             <button type="button" class="btn btn-xs btn-{{ ($podcast->is_published) ? 'success' : 'danger' }} publish-button" aria-pressed="false" data-podcast-id="{{ $podcast->id }}" id="pub_{{ $podcast->id }}">

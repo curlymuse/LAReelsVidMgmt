@@ -13,6 +13,10 @@
         {{ Form::text('title', $podcast->title, ['class' => 'form-control']) }}
     </div>
     <div class="form-group">
+        {{ Form::label('duration', 'Duration (HH:MM:SS') }}
+        {{ Form::text('duration', $podcast->duration, ['class' => 'form-control']) }}
+    </div>
+    <div class="form-group">
         {{ Form::label('description', 'Podcast Description') }}
         {{ Form::textarea('description', $podcast->description, ['class' => 'form-control']) }}
     </div>

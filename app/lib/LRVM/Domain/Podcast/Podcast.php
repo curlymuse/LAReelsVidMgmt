@@ -15,7 +15,7 @@ class Podcast extends Eloquent {
 
 	protected $fillable = [
         'title', 'description', 'episode_number',
-        'filename',
+        'filename', 'duration',
     ];
 
     public function getLinkToFile() {

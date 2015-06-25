@@ -64,7 +64,7 @@ class PodcastController extends \BaseController {
 	 */
 	public function store() {
 
-        $data = Input::only('title', 'description', 'episode_number', 'filename');
+        $data = Input::only('title', 'description', 'episode_number', 'filename', 'duration');
 
         $this->rPodcast->store($data);
 
@@ -125,7 +125,7 @@ class PodcastController extends \BaseController {
 	 */
 	public function update($id) {
 
-        $data = Input::only('title', 'description');
+        $data = Input::only('title', 'description', 'duration');
         $this->rPodcast->update($id, $data);
 
         return Redirect::route('podcasts.index');

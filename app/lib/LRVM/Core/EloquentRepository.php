@@ -49,12 +49,12 @@ abstract class EloquentRepository {
      * Update existing resource
      *
      * @param int $id
-     * @param array $input
+     * @param $data
      * @return Object
      */
-    public function update($id, array $input) {
+    public function update($id, $data) {
 
-        return $this->model->whereId($id)->update($input);
+        return $this->model->whereId($id)->update($data);
 
     }
 
