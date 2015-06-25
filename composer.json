@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"fzaninotto/faker": "~1.5",
-		"vimeo/vimeo-api": "^1.2"
+		"vimeo/vimeo-api": "^1.2",
+		"aws/aws-sdk-php": "~3.0"
 	},
 	"require-dev": {
 		"way/generators": "~2.0"

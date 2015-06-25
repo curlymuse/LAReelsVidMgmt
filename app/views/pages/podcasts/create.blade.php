@@ -21,10 +21,6 @@
         {{ Form::textarea('description', '', ['class' => 'form-control']) }}
     </div>
     <div class="form-group">
-        {{ Form::label('fileanme', 'Choose File Name') }}
-        {{ Form::text('filename', '', ['class' => 'form-control']) }}
-    </div>
-    <div class="form-group">
         {{ Form::submit('Upload New Podcast') }}
     </div>
 

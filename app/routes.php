@@ -113,6 +113,14 @@ Route::group(['prefix' => 'podcasts', 'before' => 'auth'], function(){
         'as' => 'podcasts.togglePublish',
         'uses' => 'PodcastController@togglePublish',
     ]);
+    Route::get('/{id}/link', [
+        'as' => 'podcasts.link',
+        'uses' => 'PodcastController@link',
+    ]);
+    Route::post('/{id}/link', [
+        'as' => 'podcasts.upload',
+        'uses' => 'PodcastController@upload',
+    ]);
 });
 
 Route::group(['prefix' => 'podcasts'], function(){

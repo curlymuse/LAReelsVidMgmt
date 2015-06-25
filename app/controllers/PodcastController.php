@@ -64,7 +64,7 @@ class PodcastController extends \BaseController {
 	 */
 	public function store() {
 
-        $data = Input::only('title', 'description', 'episode_number', 'filename', 'duration');
+        $data = Input::only('title', 'description', 'episode_number', 'duration');
 
         $this->rPodcast->store($data);
 
@@ -83,13 +83,26 @@ class PodcastController extends \BaseController {
 
         $podcast = $this->rPodcast->find($id);
 
-        $path = Config::get('lrvm.podcast_dir') . '/' . $podcast->filename;
-        $contents = file_get_contents($path);
+        $bucket = Config::get('lrvm.s3_podcast_bucket');
+        $endpoint = 'https://s3-us-west-1.amazonaws.com/'.$bucket.'/';
+        $key = str_replace($endpoint, '', $podcast->filename);
 
-        //return Response::make($contents, 200)->header('Content-Type', 'audio/mpeg');
+        $s3 = new Aws\S3\S3Client([
+            'credentials' => [
+                'key' => $_ENV['S3_PUB_KEY'],
+                'secret' => $_ENV['S3_PRIVATE_KEY']
+            ],
+            'version' => 'latest',
+            'region' => 'us-west-1',
+        ]);
 
+        $result = $s3->getObject([
+            'Bucket' => $bucket,
+            'Key' => $key,
+        ]);
+        $contents = $result['Body'];
 
-        return Response::download($path, 'episode-'.$podcast->episode_number.'.mp3');
+        return Response::make($contents, 200)->header('Content-Type', $result['ContentType']);
 
 	}
 
@@ -135,6 +148,47 @@ class PodcastController extends \BaseController {
         return Redirect::route('podcasts.index');
 
 	}
+
+    public function link($id) {
+
+        $podcast = $this->rPodcast->find($id);
+        return View::make('pages.podcasts.link')->with(compact(['podcast']));
+
+    }
+
+    public function upload($id) {
+
+        $podcast = $this->rPodcast->find($id);
+        $path = Input::file('filename')->getRealPath();
+
+        $s3 = new Aws\S3\S3Client([
+            'credentials' => [
+                'key' => $_ENV['S3_PUB_KEY'],
+                'secret' => $_ENV['S3_PRIVATE_KEY']
+            ],
+            'version' => 'latest',
+            'region' => 'us-west-1',
+        ]);
+
+        $bucket = Config::get('lrvm.s3_podcast_bucket');
+        $title = Input::file('filename')->getClientOriginalName();
+
+        $result = $s3->putObject([
+            'Bucket'    => $bucket,
+            'Key'       => $title,
+            'SourceFile' => $path,
+        ]);
+
+        $s3->waitUntil('ObjectExists', [
+            'Bucket' => $bucket,
+            'Key'   => $title
+        ]);
+
+        $this->rPodcast->update($podcast->id, ['filename' => $result['ObjectURL']]);
+
+        return Redirect::route('podcasts.index');
+
+    }
 
 	/**
 	 * Remove the specified resource from storage.
