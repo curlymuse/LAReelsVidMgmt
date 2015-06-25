@@ -2,6 +2,7 @@
 
 namespace LRVM\Domain\Podcast;
 
+use Config;
 use Eloquent;
 use LRVM\Domain\Video\Video;
 use URL;
@@ -27,6 +28,13 @@ class Podcast extends Eloquent {
     public function getPublishedStatus() {
 
         return ($this->is_published) ? 'Published' : 'Unpublished';
+
+    }
+
+    public function getLength() {
+
+        $file = Config::get('lrvm.podcast_dir') . '/' .$this->filename;
+        return filesize($file);
 
     }
 

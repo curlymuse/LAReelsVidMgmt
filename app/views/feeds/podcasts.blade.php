@@ -26,7 +26,7 @@
             <link>{{ $podcast->getLinkToFile() }}</link>
             <pubDate>{{ $podcast->created_at->format('D, d L Y H:i:s e') }}</pubDate>
             <description>{{ $podcast->description }}</description>
-            <enclosure url="{{ $podcast->getLinkToFile() }}" length="11779397" type="audio/mpeg"/>
+            <enclosure url="{{ $podcast->getLinkToFile() }}" length="{{ $podcast->getLength() }}" type="audio/mpeg"/>
             <itunes:duration>{{ $podcast->duration }}</itunes:duration>
             <itunes:subtitle>{{ $podcast->title }}</itunes:subtitle>
             <itunes:summary>Great Hollywood Adventure</itunes:summary>
