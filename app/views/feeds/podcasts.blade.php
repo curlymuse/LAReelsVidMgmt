@@ -16,9 +16,9 @@
             <itunes:name>LA Reels</itunes:name>
             <itunes:email>info@lareels.com</itunes:email>
         </itunes:owner>
-        <itunes:explicit>No</itunes:explicit>
+        <itunes:explicit>Yes</itunes:explicit>
         <itunes:image href="{{ asset('img/podcast_logo.png') }}"/>
-        <itunes:category text="Acting">
+        <itunes:category text="TV & Film">
         </itunes:category>
     @foreach ($podcasts as $podcast)
         <item>
