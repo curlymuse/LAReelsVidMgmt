@@ -15,7 +15,7 @@
             This is a free show where we interview casting directors, filmmakers, working actors, agents, managers, successful entrepreneurs and authors and share insights in the business of acting, filmmaking and entertaining as well as tips and tricks to lead a bigger, badder, better life.
         </itunes:summary>
         <itunes:owner>
-            <itunes:name>LA Reels</itunes:name>
+            <itunes:name>LA REELS</itunes:name>
             <itunes:email>info@lareels.com</itunes:email>
         </itunes:owner>
         <itunes:explicit>Yes</itunes:explicit>
