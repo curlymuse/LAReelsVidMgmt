@@ -106,7 +106,9 @@ class PodcastController extends \BaseController {
 
         $contents = $result['Body'];
 
-        return Response::make($contents, 200)->header('Content-Type', $result['ContentType']);
+        return Response::make($contents, 200)
+            ->header('Content-Disposition', sprintf('attachment; filename="ep-%d.mp3"', $podcast->episode_number))
+            ->header('Content-Type', $result['ContentType']);
 
 	}
 
