@@ -9,7 +9,7 @@
         <language>en-us</language>
         <copyright>LA REELS Copyright 2015</copyright>
         <atom:link href="{{ URL::route('podcasts.feed') }}" rel="self" type="application/rss+xml" />
-        <itunes:author>LA Reels</itunes:author>
+        <itunes:author>LA REELS</itunes:author>
         <itunes:summary>
             The Great Hollywood Adventure features career advice and life hacks for actors, performers, and entrepreneurs from established industry guests. Join our hosts Brett Newton and Noah Edward from LA REELS as they take you an adventure like no other! To Hollywood and beyond!
             This is a free show where we interview casting directors, filmmakers, working actors, agents, managers, successful entrepreneurs and authors and share insights in the business of acting, filmmaking and entertaining as well as tips and tricks to lead a bigger, badder, better life.
