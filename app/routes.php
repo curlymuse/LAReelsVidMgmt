@@ -94,6 +94,10 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.podcasts.get',
             'uses' => 'ApiPodcastsController@show',
         ]);
+        Route::post('/podcasts/{id}/marksynced', [
+            'as' => 'api.podcasts.marksynced',
+            'uses' => 'ApiPodcastsController@store',
+        ]);
         Route::post('/podcasts/{id}/linkpost/{postId}', [
             'as' => 'api.podcasts.linkPost',
             'uses' => 'ApiPodcastsController@update',

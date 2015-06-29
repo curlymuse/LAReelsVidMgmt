@@ -62,5 +62,19 @@ class EloquentPodcastRepository extends EloquentRepository implements PodcastRep
         return $podcast->save();
 
     }
+
+    /**
+     * Mark this podcast synced
+     *
+     * @param $id
+     * @return boolean
+     */
+    public function markSynced($id) {
+
+        $podcast = $this->find($id);
+        $podcast->synced_at = date('Y-m-d H:i:s');
+        return $podcast->save();
+
+    }
 }
 

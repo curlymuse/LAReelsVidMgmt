@@ -20,6 +20,14 @@ interface PodcastRepository {
     public function togglePublished($id);
 
     /**
+     * Mark this podcast synced
+     *
+     * @param $id
+     * @return boolean
+     */
+    public function markSynced($id);
+
+    /**
      * Link a WP post to podcast
      *
      * @param $id

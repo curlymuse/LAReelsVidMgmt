@@ -52,6 +52,18 @@ class ApiPodcastsController extends ApiController {
     }
 
     /**
+     * Mark this podcast synced
+     *
+     * @param $id
+     */
+    public function store($id) {
+
+        $this->rPodcast->markSynced($id);
+        return $this->_succeed();
+
+    }
+
+    /**
      * Link Podcast to WP post
      *
      * @param $id
