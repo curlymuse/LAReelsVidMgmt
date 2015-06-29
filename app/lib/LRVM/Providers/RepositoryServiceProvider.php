@@ -4,6 +4,7 @@ namespace LRVM\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use LRVM\Domain\Category\EloquentCategoryPresenter;
+use LRVM\Domain\Podcast\EloquentPodcastPresenter;
 use LRVM\Domain\Podcast\EloquentPodcastRepository;
 use LRVM\Domain\Podcast\Podcast;
 use LRVM\Domain\Video\EloquentVideoPresenter;
@@ -21,7 +22,7 @@ class RepositoryServiceProvider extends ServiceProvider {
           return new EloquentCategoryPresenter(new Category);
       });
       $this->app->bind('LRVM\Domain\Podcast\PodcastRepository', function($app){
-          return new EloquentPodcastRepository(new Podcast);
+          return new EloquentPodcastPresenter(new Podcast);
       });
 
   }
