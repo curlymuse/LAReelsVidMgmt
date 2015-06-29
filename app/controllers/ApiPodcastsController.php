@@ -23,7 +23,11 @@ class ApiPodcastsController extends ApiController {
 
         $podcasts = $this->rPodcast->presentAll();
 
-        return $this->_succeed($podcasts);
+        $data = [
+            'podcasts' => $podcasts
+        ];
+
+        return $this->_succeed($data);
 
     }
 
