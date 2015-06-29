@@ -20,7 +20,7 @@
     </tr>
 @foreach ($podcasts as $podcast)
     <tr>
-        <td>{{ $podcast->episode_number }}</td>
+        <td>{{ sprintf('%02d', $podcast->episode_number) }}</td>
         <td>
             <a href="{{ URL::route('podcasts.show', $podcast->id) }}">{{ $podcast->title }}</a></td>
         <td>{{ $podcast->description }}</td>
