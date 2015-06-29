@@ -56,6 +56,10 @@ Route::group(['prefix' => 'api'], function() {
             'as' => 'api.podcasts.all',
             'uses' => 'ApiPodcastsController@index',
         ]);
+        Route::get('/podcasts/{id}/get', [
+            'as' => 'api.podcasts.get',
+            'uses' => 'ApiPodcastsController@show',
+        ]);
         Route::get('/podcasts/{id}/linkpost/{postId}', [
             'as' => 'api.podcasts.linkPost',
             'uses' => 'ApiPodcastsController@update',

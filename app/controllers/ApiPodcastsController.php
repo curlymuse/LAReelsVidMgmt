@@ -36,6 +36,28 @@ class ApiPodcastsController extends ApiController {
 
     }
 
+    /**
+     * Return JSON of a single podcast
+     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function show($id) {
+
+        $obj = $this->rPodcast->find($id);
+        $podcast =  $this->rPodcast->present($obj);
+
+        return $this->_succeed(['podcast' => $podcast]);
+
+    }
+
+    /**
+     * Link Podcast to WP post
+     *
+     * @param $id
+     * @param $postId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function update($id, $postId) {
 
         $this->rPodcast->linkPost($id, $postId);
