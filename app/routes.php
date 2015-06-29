@@ -84,9 +84,15 @@ Route::group(['prefix' => 'api'], function(){
             'as' => 'api.categories.update',
             'uses' => 'ApiCategoriesController@update',
         ]);
+
+        //  Podcasts
         Route::post('/podcasts/all', [
             'as' => 'api.podcasts.all',
             'uses' => 'ApiPodcastsController@index',
+        ]);
+        Route::post('/podcasts/{id}/linkpost/{postId}', [
+            'as' => 'api.podcasts.linkPost',
+            'uses' => 'ApiPodcastsController@update',
         ]);
     });
 

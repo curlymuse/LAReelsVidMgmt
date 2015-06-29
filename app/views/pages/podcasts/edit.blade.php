@@ -28,7 +28,10 @@
         </div>
         <div class="form-group">
             {{ Form::label('episode_image', 'Choose Episode Image') }}
-            {{ Form::file('episode_image', $podcast->episode_image, ['class' => 'form-control']) }}
+            @if ($podcast->episode_image)
+                <img src="{{ $podcast->episode_image }}" class="img-rounded" style="width:40px;" />
+            @endif
+            {{ Form::file('episode_image', '', ['class' => 'form-control']) }}<br/>
         </div>
         <div class="form-group">
             {{ Form::submit('Update Podcast Information') }}
