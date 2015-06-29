@@ -13,6 +13,7 @@
         <th>Episode #</th>
         <th>Title</th>
         <th>Description</th>
+        <th>Image</th>
         <th>Duration</th>
         <th>Linked?</th>
         <th></th>
@@ -24,6 +25,11 @@
         <td>
             <a href="{{ URL::route('podcasts.show', $podcast->id) }}">{{ $podcast->title }}</a></td>
         <td>{{ $podcast->description }}</td>
+        <td>
+        @if ($podcast->episode_image)
+            <img class="img-rounded" style="width:40px;" src="{{ $podcast->episode_image }}" />
+        @endif
+        </td>
         <td>{{ $podcast->duration }}</td>
         <td>
             @if ($podcast->filename)

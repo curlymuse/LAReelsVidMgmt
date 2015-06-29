@@ -149,6 +149,19 @@ class PodcastController extends \BaseController {
 	public function update($id) {
 
         $data = Input::only('title', 'description', 'duration');
+
+        if (Input::file('episode_image')) {
+            $path = Input::file('episode_image')->getRealPath();
+            $bucket = Config::get('lrvm.s3_podcast_bucket');
+            $title = Input::file('episode_image')->getClientOriginalName();
+            $uploader = new \LRVM\Modules\Uploader(
+                $bucket, $title, $path, 'public-read'
+            );
+            $result = $uploader->doUpload();
+            $data['episode_image'] = $result['ObjectURL'];
+        }
+
+
         $this->rPodcast->update($id, $data);
 
         return Redirect::route('podcasts.index');
@@ -166,30 +179,13 @@ class PodcastController extends \BaseController {
 
         $podcast = $this->rPodcast->find($id);
         $path = Input::file('filename')->getRealPath();
-
-        $s3 = new Aws\S3\S3Client([
-            'credentials' => [
-                'key' => $_ENV['S3_PUB_KEY'],
-                'secret' => $_ENV['S3_PRIVATE_KEY']
-            ],
-            'version' => 'latest',
-            'region' => 'us-west-1',
-        ]);
-
         $bucket = Config::get('lrvm.s3_podcast_bucket');
         $title = Input::file('filename')->getClientOriginalName();
 
-        $result = $s3->putObject([
-            'Bucket'    => $bucket,
-            'Key'       => $title,
-            'SourceFile' => $path,
-            'ACL'       => 'public-read',
-        ]);
-
-        $s3->waitUntil('ObjectExists', [
-            'Bucket' => $bucket,
-            'Key'   => $title
-        ]);
+        $uploader = new \LRVM\Modules\Uploader(
+            $bucket, $title, $path, 'public-read'
+        );
+        $result = $uploader->doUpload();
 
         $this->rPodcast->update($podcast->id, ['filename' => $title]);
 
