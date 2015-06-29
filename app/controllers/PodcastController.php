@@ -183,6 +183,7 @@ class PodcastController extends \BaseController {
             'Bucket'    => $bucket,
             'Key'       => $title,
             'SourceFile' => $path,
+            'ACL'       => 'public-read',
         ]);
 
         $s3->waitUntil('ObjectExists', [

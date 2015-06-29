@@ -26,11 +26,11 @@
         <item>
             <title>{{ sprintf('%02d', $podcast->episode_number) }}: {{ $podcast->title }}</title>
             <link>{{ $podcast->getLinkToFile() }}</link>
-            <pubDate>{{ $podcast->created_at->format('D, d L Y H:i:s e') }}</pubDate>
+            <pubDate>{{ $podcast->created_at->format('D, d M Y H:i:s') }} PST</pubDate>
             <enclosure url="{{ $podcast->getLinkToFile() }}" length="{{ $podcast->getLength() }}" type="audio/mpeg"/>
             <itunes:summary>{{ $podcast->description }}</itunes:summary>
             <itunes:duration>{{ $podcast->duration }}</itunes:duration>
-            <itunes:subtitle>{{ $podcast->title }}</itunes:subtitle>
+            <itunes:subtitle>{{ $podcast->description }}</itunes:subtitle>
             <itunes:image href="{{ asset('img/podcast_logo.png') }}" />
         </item>
     @endforeach
