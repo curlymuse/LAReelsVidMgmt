@@ -47,5 +47,20 @@ class EloquentPodcastRepository extends EloquentRepository implements PodcastRep
             ->get();
 
     }
+
+    /**
+     * Link a WP post to podcast
+     *
+     * @param $id
+     * @param $postId
+     * @return mixed
+     */
+    public function linkPost($id, $postId) {
+
+        $podcast = $this->find($id);
+        $podcast->wordpress_post_id = $postId;
+        return $podcast->save();
+
+    }
 }
 

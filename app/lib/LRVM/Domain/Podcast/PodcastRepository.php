@@ -19,4 +19,13 @@ interface PodcastRepository {
      */
     public function togglePublished($id);
 
+    /**
+     * Link a WP post to podcast
+     *
+     * @param $id
+     * @param $postId
+     * @return mixed
+     */
+    public function linkPost($id, $postId);
+
 }

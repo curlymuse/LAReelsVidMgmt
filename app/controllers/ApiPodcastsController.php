@@ -19,6 +19,11 @@ class ApiPodcastsController extends ApiController {
 
     }
 
+    /**
+     * Return index of all podcasts
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function index() {
 
         $podcasts = $this->rPodcast->presentAll();
@@ -28,6 +33,13 @@ class ApiPodcastsController extends ApiController {
         ];
 
         return $this->_succeed($data);
+
+    }
+
+    public function update($id, $postId) {
+
+        $this->rPodcast->linkPost($id, $postId);
+        return $this->_succeed();
 
     }
 
