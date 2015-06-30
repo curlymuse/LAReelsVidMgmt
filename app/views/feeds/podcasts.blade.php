@@ -1,6 +1,6 @@
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>The Great Hollywood Adventure</title>
+        <title>The Great Hollywood Adventure - The GHA</title>
         <link>http://www.lareels.com</link>
         <description>
             The Great Hollywood Adventure features career advice and life hacks for actors, performers, and entrepreneurs from established industry guests. Join our hosts Brett Newton and Noah Edward from LA REELS as they take you an adventure like no other! To Hollywood and beyond!
