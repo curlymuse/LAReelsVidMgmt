@@ -14,7 +14,7 @@ class EloquentPodcastPresenter extends EloquentPodcastRepository {
     public function presentAll() {
 
         $return = [];
-        foreach ($this->all() as $podcast)
+        foreach ($this->allPublished() as $podcast)
             $return[] = $this->present($podcast);
 
         return $return;
