@@ -16,6 +16,7 @@
         <th>Image</th>
         <th>Duration</th>
         <th>Linked?</th>
+        <th>Hits</th>
         <th></th>
         <th></th>
     </tr>
@@ -37,6 +38,9 @@
             @else
                 <a href="{{ URL::route('podcasts.link', $podcast->id) }}"><button class="btn btn-xs btn-primary">Link</button></a>
             @endif
+        </td>
+        <td>
+            {{ $podcast->getTotalHits() }} / {{ $podcast->getUniqueHits() }}
         </td>
         <td style="text-align:center;"><a href="{{ URL::route('podcasts.edit', $podcast->id) }}">Edit</a></td>
         <td style="text-align:center;">

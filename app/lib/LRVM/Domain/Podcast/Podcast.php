@@ -56,6 +56,18 @@ class Podcast extends Eloquent {
 
     }
 
+    public function getTotalHits() {
+
+        return $this->hits()->count();
+
+    }
+
+    public function getUniqueHits() {
+
+        return $this->hits()->distinct('ip')->count('ip');
+
+    }
+
     public function getLength() {
 
         $file = $this->getS3Link();
