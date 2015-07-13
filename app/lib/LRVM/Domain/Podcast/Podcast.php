@@ -58,8 +58,7 @@ class Podcast extends Eloquent {
 
     public function getLength() {
 
-        return 1333334;
-        $file = Config::get('lrvm.podcast_dir') . '/' .$this->filename;
+        $file = $this->getS3Link();
         return filesize($file);
 
     }
