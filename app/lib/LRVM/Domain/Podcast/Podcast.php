@@ -70,8 +70,7 @@ class Podcast extends Eloquent {
 
     public function getLength() {
 
-        $file = $this->getS3Link();
-        return filesize($file);
+        return 1;
 
     }
 
