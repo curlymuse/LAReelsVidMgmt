@@ -38,9 +38,9 @@ class Podcast extends Eloquent {
 
     }
 
-    public function getLinkToFile() {
+    public function getLinkToFile($source = 'website') {
 
-        return URL::route('podcasts.show', $this->id);
+        return URL::route('podcasts.show', [$source, $this->id]);
 
     }
 

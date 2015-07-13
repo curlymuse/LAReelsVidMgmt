@@ -40,9 +40,10 @@ interface PodcastRepository {
      * Log the IP of the downloader
      *
      * @param $podcastId
+     * @param $source
      * @param $ip
      * @return mixed
      */
-    public function logHit($podcastId, $ip);
+    public function logHit($podcastId, $source, $ip);
 
 }

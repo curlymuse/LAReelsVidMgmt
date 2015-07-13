@@ -9,7 +9,7 @@ class PodcastHit extends Eloquent {
     protected $table = 'lrvm_podcast_hits';
 
     protected $fillable = [
-        'podcast_id', 'ip'
+        'podcast_id', 'ip', 'source'
     ];
 
     public function podcast() {

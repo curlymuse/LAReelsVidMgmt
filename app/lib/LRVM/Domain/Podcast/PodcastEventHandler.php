@@ -25,9 +25,9 @@ class PodcastEventHandler {
      *
      * @param Podcast $podcast
      */
-    public function onRequested($podcast) {
+    public function onRequested($podcast, $source) {
 
-        $this->rPodcast->logHit($podcast->id, Request::ip());
+        $this->rPodcast->logHit($podcast->id, $source, Request::ip());
 
     }
 

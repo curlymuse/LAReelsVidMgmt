@@ -82,13 +82,15 @@ class EloquentPodcastRepository extends EloquentRepository implements PodcastRep
      * Log the IP of the downloader
      *
      * @param $podcastId
+     * @param $source
      * @param $ip
      * @return mixed
      */
-    public function logHit($podcastId, $ip) {
+    public function logHit($podcastId, $source, $ip) {
 
         $hit = new PodcastHit([
-            'ip'    => $ip
+            'ip'    => $ip,
+            'source' => $source,
         ]);
         $this->find($podcastId)->hits()->save($hit);
 

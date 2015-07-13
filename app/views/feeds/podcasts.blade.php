@@ -25,9 +25,9 @@
     @foreach ($podcasts as $podcast)
         <item>
             <title>{{ sprintf('%02d', $podcast->episode_number) }}: {{ $podcast->title }}</title>
-            <link>{{ $podcast->getLinkToFile() }}</link>
+            <link>{{ $podcast->getLinkToFile('rss') }}</link>
             <pubDate>{{ $podcast->created_at->format('D, d M Y H:i:s') }} PST</pubDate>
-            <enclosure url="{{ $podcast->getLinkToFile() }}" length="{{ $podcast->getLength() }}" type="audio/mpeg"/>
+            <enclosure url="{{ $podcast->getLinkToFile('rss') }}" length="{{ $podcast->getLength() }}" type="audio/mpeg"/>
             <itunes:summary>{{ $podcast->description }}</itunes:summary>
             <itunes:duration>{{ $podcast->duration }}</itunes:duration>
             <itunes:subtitle>{{ $podcast->description }}</itunes:subtitle>

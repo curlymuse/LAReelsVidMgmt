@@ -79,11 +79,11 @@ class PodcastController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id) {
+	public function show($source = 'website', $id) {
 
         $podcast = $this->rPodcast->find($id);
 
-        Event::fire('podcast.requested', $podcast);
+        Event::fire('podcast.requested', [$podcast, $source]);
 
         return Redirect::to($podcast->getS3Link());
 

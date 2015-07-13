@@ -142,7 +142,7 @@ Route::group(['prefix' => 'podcasts', 'before' => 'auth'], function(){
 });
 
 Route::group(['prefix' => 'podcasts'], function(){
-    Route::get('/files/ep-{id}.mp3', [
+    Route::get('/files/{source}/ep-{id}.mp3', [
         'as' => 'podcasts.show',
         'uses' => 'PodcastController@show',
     ]);
