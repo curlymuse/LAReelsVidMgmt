@@ -39,9 +39,7 @@
                 <a href="{{ URL::route('podcasts.link', $podcast->id) }}"><button class="btn btn-xs btn-primary">Link</button></a>
             @endif
         </td>
-        <td>
-            {{ $podcast->getTotalHits() }} / {{ $podcast->getUniqueHits() }}
-        </td>
+        <td>{{ $podcast->getUniqueHits() }}</td>
         <td style="text-align:center;"><a href="{{ URL::route('podcasts.edit', $podcast->id) }}">Edit</a></td>
         <td style="text-align:center;">
             <button type="button" class="btn btn-xs btn-{{ ($podcast->is_published) ? 'success' : 'danger' }} publish-button" aria-pressed="false" data-podcast-id="{{ $podcast->id }}" id="pub_{{ $podcast->id }}">

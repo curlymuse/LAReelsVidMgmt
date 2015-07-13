@@ -17,6 +17,11 @@ class Category extends Eloquent {
      */
     public $timestamps = false;
 
+    /**
+     * I mean...
+     *
+     * @var array
+     */
 	protected $fillable = [];
 
     /**
