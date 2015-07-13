@@ -36,4 +36,13 @@ interface PodcastRepository {
      */
     public function linkPost($id, $postId);
 
+    /**
+     * Log the IP of the downloader
+     *
+     * @param $podcastId
+     * @param $ip
+     * @return mixed
+     */
+    public function logHit($podcastId, $ip);
+
 }

@@ -83,32 +83,9 @@ class PodcastController extends \BaseController {
 
         $podcast = $this->rPodcast->find($id);
 
-        $bucket = Config::get('lrvm.s3_podcast_bucket');
-        $key = $podcast->filename;
+        Event::fire('podcast.requested', $podcast);
 
-        $s3 = new Aws\S3\S3Client([
-            'credentials' => [
-                'key' => $_ENV['S3_PUB_KEY'],
-                'secret' => $_ENV['S3_PRIVATE_KEY']
-            ],
-            'version' => 'latest',
-            'region' => 'us-west-1',
-        ]);
-
-        try {
-            $result = $s3->getObject([
-                'Bucket' => $bucket,
-                'Key' => $key,
-            ]);
-        } catch (Exception $e) {
-            return Redirect::route('podcasts.index')->with('error', $e->getMessage());
-        }
-
-        $contents = $result['Body'];
-
-        return Response::make($contents, 200)
-            ->header('Content-Disposition', sprintf('attachment; filename="ep-%d.mp3"', $podcast->episode_number))
-            ->header('Content-Type', $result['ContentType']);
+        return Redirect::to($podcast->getS3Link());
 
 	}
 

@@ -3,6 +3,7 @@
 namespace LRVM\Domain\Podcast;
 
 use LRVM\Core\EloquentRepository;
+use LRVM\Domain\PodcastHit\PodcastHit;
 
 class EloquentPodcastRepository extends EloquentRepository implements PodcastRepository {
 
@@ -74,6 +75,22 @@ class EloquentPodcastRepository extends EloquentRepository implements PodcastRep
         $podcast = $this->find($id);
         $podcast->synced_at = date('Y-m-d H:i:s');
         return $podcast->save();
+
+    }
+
+    /**
+     * Log the IP of the downloader
+     *
+     * @param $podcastId
+     * @param $ip
+     * @return mixed
+     */
+    public function logHit($podcastId, $ip) {
+
+        $hit = new PodcastHit([
+            'ip'    => $ip
+        ]);
+        $this->find($podcastId)->hits()->save($hit);
 
     }
 }

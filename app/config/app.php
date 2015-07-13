@@ -124,6 +124,7 @@ return array(
     'Way\Generators\GeneratorsServiceProvider',
 
         'LRVM\Providers\RepositoryServiceProvider',
+        'LRVM\Providers\EventServiceProvider',
 	),
 
 	/*

@@ -2,10 +2,12 @@
 
 namespace LRVM\Domain\Podcast;
 
+use App;
 use Config;
 use Eloquent;
 use LRVM\Domain\Video\Video;
 use URL;
+use Event;
 
 class Podcast extends Eloquent {
 
@@ -19,10 +21,32 @@ class Podcast extends Eloquent {
         'filename', 'duration', 'episode_image',
     ];
 
+    /**
+     * Register event observers
+     */
+    public static function boot() {
+
+        parent::boot();
+
+        Event::subscribe(App::make(\LRVM\Domain\Podcast\PodcastEventHandler::class));
+
+    }
+
+    public function hits() {
+
+        return $this->hasMany(\LRVM\Domain\PodcastHit\PodcastHit::class);
+
+    }
+
     public function getLinkToFile() {
 
-        return sprintf('%s/%s/%s', Config::get('lrvm.s3_gateway'), Config::get('lrvm.s3_podcast_bucket'), $this->filename);
         return URL::route('podcasts.show', $this->id);
+
+    }
+
+    public function getS3Link() {
+
+        return sprintf('%s/%s/%s', Config::get('lrvm.s3_gateway'), Config::get('lrvm.s3_podcast_bucket'), $this->filename);
 
     }
 
