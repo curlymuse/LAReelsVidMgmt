@@ -122,6 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
     'Way\Generators\GeneratorsServiceProvider',
+        'Alaouy\Youtube\YoutubeServiceProvider',
 
         'LRVM\Providers\RepositoryServiceProvider',
         'LRVM\Providers\EventServiceProvider',
