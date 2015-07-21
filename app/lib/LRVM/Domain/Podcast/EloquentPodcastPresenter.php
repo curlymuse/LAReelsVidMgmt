@@ -21,6 +21,24 @@ class EloquentPodcastPresenter extends EloquentPodcastRepository {
 
     }
 
+    public function presentAllPublished() {
+
+        $raw = $this->allPublished();
+        $return = [];
+
+        $replace = ['“', '”', '’', '&'];
+        $with = ['"', '"', "'", 'and'];
+
+        foreach ($raw as $obj) {
+            $clean = $obj;
+            $obj->description = str_replace($replace, $with, $obj->description);
+            $return[] = $obj;
+        }
+
+        return $return;
+
+    }
+
     /**
      * Present a single podcast for JSON usage
      *

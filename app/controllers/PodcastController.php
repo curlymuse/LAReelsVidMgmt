@@ -49,7 +49,7 @@ class PodcastController extends \BaseController {
 
     public function feed() {
 
-        $podcasts = $this->rPodcast->allPublished();
+        $podcasts = $this->rPodcast->presentAllPublished();
         $content = View::make('feeds.podcasts')->with(compact(['podcasts']));
 
         return Response::make($content, 200)->header('Content-Type', 'text/xml');
