@@ -59,7 +59,7 @@ class TestPodcastFeed extends Command {
             $data = ['errorMsg' => print_r($errors, true)];
             Mail::send('emails.feed-error', $data, function($m) {
                 $m->from('webmaster@lareels.com');
-                $m->to('robin.arenson@gmail.com');
+                $m->to('noah@lareels.com');
                 $m->subject('Podcast feed error.');
             });
         }
