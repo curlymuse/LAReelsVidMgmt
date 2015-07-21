@@ -14,4 +14,5 @@
 Artisan::add(new FetchVimeoAll(App::make('LRVM\Domain\Video\VideoRepository')));
 Artisan::add(new VimeoRefreshThumbnails(App::make('LRVM\Domain\Video\VideoRepository')));
 Artisan::add(new VimeoUpdate(App::make('LRVM\Domain\Video\VideoRepository')));
+Artisan::add(new TestPodcastFeed());
 
