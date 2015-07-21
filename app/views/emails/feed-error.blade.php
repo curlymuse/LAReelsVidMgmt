@@ -1,11 +1,11 @@
-To Whomever,<br/><br/>
+Noah,<br/><br/>
 
-The podcast feed is invalid right now! It's probably your own fault. Send this to Robin:<br/><br/>
+This is an automated message to inform you that as of {{ date('M d, Y @ g:i a') }} the podcast feed is not working. You should probably call Robin. This is the error message:<br/><br/>
 
 <code>
     {{ $errorMsg }}
 </code>
-<br/>
+<br/><br/>
 
 Love,<br/>
 Webmaster
