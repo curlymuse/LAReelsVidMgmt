@@ -2,11 +2,21 @@
 
 @section('content')
 
+    <div class="pull-right" style="padding-top:15px;">
+        RSS Feed:
+        @if ($validFeed)
+            <button class="btn btn-success btn-xs" disabled="disabled">All Good</button>
+        @else
+            <button class="btn btn-danger btn-xs" disabled="disabled">Error</button>
+        @endif
+    </div>
+
 <div style="padding-bottom:25px;">
     <a href="{{ URL::route('podcasts.create') }}">
         <button class="btn btn-lg btn-primary">Add New Podcast</button>
     </a>
 </div>
+
 
 <table class="table table-bordered table-striped">
     <tr>

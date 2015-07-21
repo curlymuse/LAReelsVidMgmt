@@ -1,6 +1,7 @@
 <?php
 
 use LRVM\Domain\Podcast\PodcastRepository;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class PodcastController extends \BaseController {
 
@@ -30,8 +31,12 @@ class PodcastController extends \BaseController {
 	 */
 	public function index() {
 
+        $output = new BufferedOutput;
+        Artisan::call('lrvm:test-podcast-feed');
+        $result = $output->fetch();
+        $validFeed = ($result == 'The feed is valid.');
         $podcasts = $this->rPodcast->all();
-        return View::make('pages.podcasts.index')->with(compact(['podcasts']));
+        return View::make('pages.podcasts.index')->with(compact(['podcasts', 'validFeed']));
 
 	}
 

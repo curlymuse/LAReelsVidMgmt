@@ -52,9 +52,10 @@ class TestPodcastFeed extends Command {
         $errors = libxml_get_errors();
         libxml_clear_errors();
 
-        if (empty($errors))
+        if (empty($errors)) {
             $this->info('The feed is valid.');
-        else {
+            return true;
+        } else {
             $this->error('The feed is invalid. Call Robin.');
             $data = ['errorMsg' => print_r($errors, true)];
             Mail::send('emails.feed-error', $data, function($m) {
@@ -62,6 +63,7 @@ class TestPodcastFeed extends Command {
                 $m->to('noah@lareels.com');
                 $m->subject('Podcast feed error.');
             });
+            return false;
         }
 
 	}
